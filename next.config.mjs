@@ -1,12 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['hexagono-web.com'],
+    domains: ['hexagono.xyz'],
     formats: ['image/webp', 'image/avif'],
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'hexagono-web.com',
+        hostname: 'hexagono.xyz',
       },
     ],
   },

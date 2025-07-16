@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: process.env.NEXT_PUBLIC_SITE_NAME || "Hexágono Web",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://hexagono-web.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://hexagono.xyz",
   description: "Creamos sitios web profesionales y gestionamos tus redes sociales. Diseño profesional, precios accesibles, soporte real. Transforma tu presencia digital con nosotros.",
   keywords: [
     'desarrollo web',
@@ -19,9 +19,9 @@ export const siteConfig = {
   
   // Contact Information
   contact: {
-    email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "contacto@hexagono-web.com",
-    phone: process.env.NEXT_PUBLIC_CONTACT_PHONE || "+54 9 11 1234-5678",
-    whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "5491112345678",
+    email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "contacto@hexagono.xyz",
+    phone: process.env.NEXT_PUBLIC_CONTACT_PHONE || "+54 11 2378-2307",
+    whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "5491123782307",
   },
 
   // Social Media
