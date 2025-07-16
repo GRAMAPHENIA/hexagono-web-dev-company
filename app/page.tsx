@@ -4,34 +4,13 @@ import { CTAButton } from "@/components/ui/cta-button"
 import { PlanCard } from "@/components/ui/plan-card"
 import { QuoteBox } from "@/components/ui/quote-box"
 import Link from "next/link"
-import { ArrowRight, Globe, Users, Zap, Shield, Star, Quote, Code, Layout, Smartphone, Database, Server, Palette, Cpu } from "lucide-react"
+import { ArrowRight, Globe, Users, Zap, Shield, Star, Quote, Code } from "lucide-react"
+import { webPlans, socialPlans, formatPrice } from "@/lib/pricing"
+import { getFeaturedTestimonials } from "@/lib/testimonials"
+import { getTechnologies } from "@/lib/technologies"
 
-const testimonials = [
-  {
-    name: "María González",
-    role: "Directora de Marketing",
-    company: "Boutique Luna",
-    content:
-      "Hexágono transformó completamente nuestra presencia online. El sitio web que crearon es hermoso y funcional, y la gestión de redes sociales ha aumentado nuestras ventas un 40%.",
-    avatar: "/placeholder.svg?height=60&width=60",
-  },
-  {
-    name: "Carlos Rodríguez",
-    role: "CEO",
-    company: "TechStart Solutions",
-    content:
-      "Profesionales excepcionales. Entregaron nuestro sitio corporativo en tiempo récord y el soporte post-venta es impecable. Altamente recomendados.",
-    avatar: "/placeholder.svg?height=60&width=60",
-  },
-  {
-    name: "Ana Martínez",
-    role: "Propietaria",
-    company: "Café Central",
-    content:
-      "La landing page que desarrollaron para nuestro café generó un aumento del 60% en reservas online. El diseño es exactamente lo que necesitábamos.",
-    avatar: "/placeholder.svg?height=60&width=60",
-  },
-]
+const testimonials = getFeaturedTestimonials()
+const technologies = getTechnologies()
 
 export default function HomePage() {
   return (
@@ -79,43 +58,15 @@ export default function HomePage() {
             <div>
               <h3 className="text-2xl font-bold mb-8 text-center">Sitios Web</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <PlanCard
-                  title="Landing Page"
-                  price="$170.000"
-                  features={[
-                    "Enfocada en conversión",
-                    "Página única optimizada",
-                    "Adaptación a dispositivos",
-                    "Formularios integrados",
-                    "Conexión redes sociales",
-                    "Galería de imágenes",
-                  ]}
-                />
-                <PlanCard
-                  title="Web Corporativa"
-                  price="$250.000"
-                  popular={true}
-                  features={[
-                    "Hasta 5 secciones",
-                    "Identidad de marca",
-                    "Hosting externo",
-                    "Diseño responsivo",
-                    "Formulario de contacto",
-                    "Optimización SEO básica",
-                  ]}
-                />
-                <PlanCard
-                  title="Tienda Online"
-                  price="$370.000"
-                  features={[
-                    "Carrito de compras",
-                    "Medios de pago integrados",
-                    "Carga de productos",
-                    "Hosting incluido",
-                    "Panel administrativo",
-                    "Gestión de inventario",
-                  ]}
-                />
+                {webPlans.map((plan) => (
+                  <PlanCard
+                    key={plan.id}
+                    title={plan.title}
+                    price={formatPrice(plan.price, plan.currency)}
+                    popular={plan.popular}
+                    features={plan.features}
+                  />
+                ))}
               </div>
             </div>
 
@@ -123,43 +74,15 @@ export default function HomePage() {
             <div>
               <h3 className="text-2xl font-bold mb-8 text-center">Gestión de Redes Sociales</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <PlanCard
-                  title="Plan Inicial"
-                  price="$85.000"
-                  features={[
-                    "2 posts al mes",
-                    "Historias semanales",
-                    "Reducción de copias",
-                    "Diseño básico",
-                    "1 red social",
-                    "Reporte mensual",
-                  ]}
-                />
-                <PlanCard
-                  title="Plan Activo"
-                  price="$180.000"
-                  popular={true}
-                  features={[
-                    "10 posts al mes",
-                    "Diseño profesional",
-                    "Email marketing mensual",
-                    "2 redes sociales",
-                    "Historias diarias",
-                    "Análisis de métricas",
-                  ]}
-                />
-                <PlanCard
-                  title="Plan Premium"
-                  price="$310.000"
-                  features={[
-                    "Estrategia de crecimiento",
-                    "Posts ilimitados",
-                    "Todas las redes sociales",
-                    "Campañas publicitarias",
-                    "Atención personalizada",
-                    "Reportes detallados",
-                  ]}
-                />
+                {socialPlans.map((plan) => (
+                  <PlanCard
+                    key={plan.id}
+                    title={plan.title}
+                    price={formatPrice(plan.price, plan.currency)}
+                    popular={plan.popular}
+                    features={plan.features}
+                  />
+                ))}
               </div>
             </div>
           </div>
@@ -247,19 +170,19 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <Card key={index} className="p-6 hover:shadow-lg transition-shadow relative">
+            {testimonials.map((testimonial) => (
+              <Card key={testimonial.id} className="p-6 hover:shadow-lg transition-shadow relative">
                 <CardContent className="p-0 space-y-4">
                   <Quote className="h-8 w-8 text-primary/20 absolute top-4 right-4" />
                   <div className="flex items-center space-x-1 mb-4">
-                    {[...Array(5)].map((_, i) => (
+                    {[...Array(testimonial.rating)].map((_, i) => (
                       <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
                     ))}
                   </div>
                   <blockquote className="text-muted-foreground italic">"{testimonial.content}"</blockquote>
                   <div className="flex items-center space-x-3 pt-4">
                     <img
-                      src={testimonial.avatar || "/placeholder.svg"}
+                      src={testimonial.avatar || "/placeholder-user.jpg"}
                       alt={testimonial.name}
                       className="w-12 h-12 rounded-full object-cover"
                     />
@@ -316,21 +239,18 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
-            {[
-              { name: 'Frontend', icon: <Layout className="h-8 w-8 text-primary" /> },
-              { name: 'Backend', icon: <Server className="h-8 w-8 text-primary" /> },
-              { name: 'Mobile', icon: <Smartphone className="h-8 w-8 text-primary" /> },
-              { name: 'Bases de Datos', icon: <Database className="h-8 w-8 text-primary" /> },
-              { name: 'Diseño', icon: <Palette className="h-8 w-8 text-primary" /> },
-              { name: 'DevOps', icon: <Cpu className="h-8 w-8 text-primary" /> },
-            ].map((tech, index) => (
-              <div key={index} className="flex flex-col items-center p-4 bg-card rounded-lg hover:shadow-md transition-shadow h-full">
-                <div className="flex items-center justify-center h-14 w-14 mb-3 bg-primary/10 rounded-full">
-                  {tech.icon}
+            {technologies.map((tech) => {
+              const IconComponent = tech.icon;
+              return (
+                <div key={tech.id} className="flex flex-col items-center p-4 bg-card rounded-lg hover:shadow-md transition-shadow h-full group">
+                  <div className="flex items-center justify-center h-14 w-14 mb-3 bg-primary/10 rounded-full group-hover:bg-primary/20 transition-colors">
+                    <IconComponent className="h-8 w-8 text-primary" />
+                  </div>
+                  <h3 className="text-sm font-medium text-center mb-2">{tech.name}</h3>
+                  <p className="text-xs text-muted-foreground text-center">{tech.description}</p>
                 </div>
-                <h3 className="text-sm font-medium text-center">{tech.name}</h3>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           <div className="mt-12 text-center">

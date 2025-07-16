@@ -1,32 +1,49 @@
 import { MetadataRoute } from 'next'
+import { siteConfig } from '@/lib/site-config'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://hexagono-web.com'
+  const baseUrl = siteConfig.url
+  const currentDate = new Date()
   
-  return [
+  // Páginas principales del sitio
+  const staticPages = [
     {
       url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
       priority: 1,
     },
     {
       url: `${baseUrl}/services`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/testimonials`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
     {
       url: `${baseUrl}/contact`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.5,
+      lastModified: currentDate,
+      changeFrequency: 'yearly' as const,
+      priority: 0.7,
     },
     {
       url: `${baseUrl}/about`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
+      lastModified: currentDate,
+      changeFrequency: 'yearly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/faq`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
       priority: 0.5,
     },
   ]
+
+  return staticPages
 }

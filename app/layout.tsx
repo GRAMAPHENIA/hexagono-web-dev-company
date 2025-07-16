@@ -5,59 +5,47 @@ import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
+import { siteConfig } from '@/lib/site-config';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: {
-    default: 'Hexágono - Desarrollo Web y Gestión de Redes Sociales',
-    template: '%s | Hexágono Web',
+    default: `${siteConfig.name} - Desarrollo Web y Gestión de Redes Sociales`,
+    template: `%s | ${siteConfig.name}`,
   },
-  description:
-    'Creamos sitios web profesionales y gestionamos tus redes sociales. Diseño profesional, precios accesibles, soporte real. Transforma tu presencia digital con nosotros.',
-  keywords: [
-    'desarrollo web',
-    'sitios web',
-    'redes sociales',
-    'landing pages',
-    'tiendas online',
-    'diseño web',
-    'marketing digital',
-    'SEO',
-    'desarrollo a medida',
-  ],
-  authors: [{ name: 'Hexágono Web' }],
-  creator: 'Hexágono Web',
-  publisher: 'Hexágono Web',
+  description: siteConfig.description,
+  keywords: siteConfig.keywords,
+  authors: [{ name: siteConfig.author }],
+  creator: siteConfig.creator,
+  publisher: siteConfig.publisher,
   generator: 'Next.js',
-  metadataBase: new URL('https://hexagono-web.com'),
+  metadataBase: new URL(siteConfig.url),
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: 'Hexágono - Desarrollo Web y Gestión de Redes Sociales',
-    description:
-      'Diseño web profesional y gestión de redes sociales para potenciar tu negocio online.',
-    url: 'https://hexagono-web.com',
-    siteName: 'Hexágono Web',
+    title: `${siteConfig.name} - Desarrollo Web y Gestión de Redes Sociales`,
+    description: 'Diseño web profesional y gestión de redes sociales para potenciar tu negocio online.',
+    url: siteConfig.url,
+    siteName: siteConfig.name,
     locale: 'es_AR',
     type: 'website',
     images: [
       {
-        url: '/og-image.jpg',
+        url: siteConfig.ogImage,
         width: 1200,
         height: 630,
-        alt: 'Hexágono Web - Desarrollo y Marketing Digital',
+        alt: `${siteConfig.name} - Desarrollo y Marketing Digital`,
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Hexágono - Desarrollo Web y Gestión de Redes Sociales',
-    description:
-      'Diseño web profesional y gestión de redes sociales para potenciar tu negocio online.',
-    creator: '@hexagonoweb',
-    images: ['/og-image.jpg'],
+    title: `${siteConfig.name} - Desarrollo Web y Gestión de Redes Sociales`,
+    description: 'Diseño web profesional y gestión de redes sociales para potenciar tu negocio online.',
+    creator: siteConfig.social.twitter,
+    images: [siteConfig.ogImage],
   },
   robots: {
     index: true,
@@ -71,8 +59,8 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: 'TU_CODIGO_DE_VERIFICACION_GOOGLE',
-    yandex: 'TU_CODIGO_DE_VERIFICACION_YANDEX',
+    google: siteConfig.verification.google,
+    yandex: siteConfig.verification.yandex,
   },
 };
 
