@@ -4,7 +4,7 @@ import { CTAButton } from "@/components/ui/cta-button"
 import { PlanCard } from "@/components/ui/plan-card"
 import { QuoteBox } from "@/components/ui/quote-box"
 import Link from "next/link"
-import { ArrowRight, Globe, Users, Zap, Shield, Star, Quote } from "lucide-react"
+import { ArrowRight, Globe, Users, Zap, Shield, Star, Quote, Code, Layout, Smartphone, Database, Server, Palette, Cpu } from "lucide-react"
 
 const testimonials = [
   {
@@ -42,7 +42,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
-                Creamos sitios que <span className="text-primary">venden</span>
+                Soluciones web que <span className="text-[#1E2940] dark:text-primary">impulsan</span> tu negocio
               </h1>
               <p className="text-xl text-muted-foreground">
                 Diseño profesional, precios accesibles, soporte real. Transformamos tu presencia digital con sitios web
@@ -300,6 +300,43 @@ export default function HomePage() {
               >
                 <Link href="/services">Ver Todos los Planes</Link>
               </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Tecnologías */}
+      <section className="py-16 bg-muted/30">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center space-y-3 mb-12">
+            <h2 className="text-2xl sm:text-3xl font-bold">Tecnologías que Utilizamos</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Herramientas modernas para resultados excepcionales
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
+            {[
+              { name: 'Frontend', icon: <Layout className="h-8 w-8 text-primary" /> },
+              { name: 'Backend', icon: <Server className="h-8 w-8 text-primary" /> },
+              { name: 'Mobile', icon: <Smartphone className="h-8 w-8 text-primary" /> },
+              { name: 'Bases de Datos', icon: <Database className="h-8 w-8 text-primary" /> },
+              { name: 'Diseño', icon: <Palette className="h-8 w-8 text-primary" /> },
+              { name: 'DevOps', icon: <Cpu className="h-8 w-8 text-primary" /> },
+            ].map((tech, index) => (
+              <div key={index} className="flex flex-col items-center p-4 bg-card rounded-lg hover:shadow-md transition-shadow h-full">
+                <div className="flex items-center justify-center h-14 w-14 mb-3 bg-primary/10 rounded-full">
+                  {tech.icon}
+                </div>
+                <h3 className="text-sm font-medium text-center">{tech.name}</h3>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-12 text-center">
+            <div className="inline-flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full text-sm">
+              <Code className="h-4 w-4 text-primary" />
+              <span>Tecnologías modernas y actualizadas</span>
             </div>
           </div>
         </div>
