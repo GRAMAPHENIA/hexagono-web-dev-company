@@ -78,22 +78,22 @@ npm run type-check   # Verifica tipos de TypeScript
 
 ### Variables de Entorno
 
-Crea un archivo `.env.local` con las siguientes variables:
+Crea un archivo `.env.local` con tus variables:
 
 ```env
 # Configuración del sitio
-NEXT_PUBLIC_SITE_NAME="Hexágono Web"
-NEXT_PUBLIC_SITE_URL="https://hexagono.xyz"
+NEXT_PUBLIC_SITE_NAME=""
+NEXT_PUBLIC_SITE_URL=""
 
 # Información de contacto
-NEXT_PUBLIC_CONTACT_EMAIL="contacto@hexagono.xyz"
-NEXT_PUBLIC_CONTACT_PHONE="+54 11 2378-2307"
-NEXT_PUBLIC_WHATSAPP_NUMBER="5491123782307"
+NEXT_PUBLIC_CONTACT_EMAIL=""
+NEXT_PUBLIC_CONTACT_PHONE=""
+NEXT_PUBLIC_WHATSAPP_NUMBER=""
 
 # Redes sociales
-NEXT_PUBLIC_TWITTER_HANDLE="@hexagonoweb"
-NEXT_PUBLIC_FACEBOOK_PAGE="hexagonoweb"
-NEXT_PUBLIC_INSTAGRAM_HANDLE="hexagonoweb"
+NEXT_PUBLIC_TWITTER_HANDLE=""
+NEXT_PUBLIC_FACEBOOK_PAGE=""
+NEXT_PUBLIC_INSTAGRAM_HANDLE=""
 
 # SEO
 NEXT_PUBLIC_GOOGLE_VERIFICATION="tu-codigo-de-verificacion"
@@ -109,18 +109,6 @@ npm install
 # Iniciar desarrollo
 npm run dev
 ```
-
-## 📋 Servicios Ofrecidos
-
-### Desarrollo Web
-- **Landing Page** ($170.000 ARS) - Página única optimizada para conversión
-- **Web Corporativa** ($250.000 ARS) - Sitio web completo hasta 5 secciones
-- **Tienda Online** ($370.000 ARS) - E-commerce con carrito y medios de pago
-
-### Gestión de Redes Sociales
-- **Plan Inicial** ($85.000 ARS) - 2 posts mensuales, 1 red social
-- **Plan Activo** ($180.000 ARS) - 10 posts mensuales, 2 redes sociales
-- **Plan Premium** ($310.000 ARS) - Posts ilimitados, todas las redes
 
 ## 🧪 Testing
 
@@ -195,4 +183,4 @@ Este proyecto es propiedad de Hexágono Web. Todos los derechos reservados.
 
 ---
 
-Desarrollado con ❤️ por el equipo de Hexágono Web
+Desarrollado por el equipo de Hexágono Web
