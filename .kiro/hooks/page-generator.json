@@ -1,0 +1,15 @@
+{
+  "name": "Generate Next.js Page",
+  "description": "Genera una nueva página Next.js siguiendo las convenciones del proyecto",
+  "trigger": {
+    "type": "manual",
+    "buttonText": "📄 New Page"
+  },
+  "actions": [
+    {
+      "type": "agent_prompt",
+      "prompt": "Voy a ayudarte a crear una nueva página Next.js siguiendo las convenciones del proyecto Hexágono Web:\n\n1. **Pregúntame**:\n   - Nombre de la página y su propósito\n   - Si debe ir en español (URLs públicas) o inglés (admin/api)\n   - Tipo de página (pública, admin, landing, etc.)\n\n2. **Crearé**:\n   - Archivo page.tsx en la ubicación correcta del App Router\n   - Metadatos SEO optimizados en español argentino\n   - Layout apropiado según el tipo de página\n   - Componentes base con Tailwind CSS y Radix UI\n   - TypeScript con interfaces tipadas\n   - Responsive design mobile-first\n\n3. **Incluiré**:\n   - Estructura semántica HTML5\n   - Accesibilidad WCAG 2.1\n   - Loading y error states si es necesario\n   - Integración con el sistema de temas claro/oscuro\n\n4. **Consideraciones especiales**:\n   - URLs en español para contenido público (/servicios, /contacto, /cotizacion)\n   - URLs en inglés para admin y APIs (/admin, /api)\n   - Metadatos optimizados para Hexágono Web (empresa argentina)\n   - Precios en pesos argentinos cuando aplique\n\nSigue las guías de Next.js 15 y los estándares de codificación del proyecto."
+    }
+  ],
+  "enabled": true
+}

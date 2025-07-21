@@ -1,0 +1,15 @@
+{
+  "name": "Accessibility Checker",
+  "description": "Revisa componentes para cumplimiento de accesibilidad WCAG",
+  "trigger": {
+    "type": "manual",
+    "buttonText": "♿ Check A11y"
+  },
+  "actions": [
+    {
+      "type": "agent_prompt",
+      "prompt": "Por favor realiza una auditoría de accesibilidad en los componentes del proyecto:\n\n1. Revisa que los componentes tengan:\n   - Etiquetas ARIA apropiadas\n   - Roles semánticos correctos\n   - Navegación por teclado funcional\n   - Contraste de colores adecuado (mínimo 4.5:1)\n   - Texto alternativo en imágenes\n   - Focus indicators visibles\n\n2. Verifica específicamente:\n   - Formularios con labels asociados\n   - Botones con texto descriptivo\n   - Enlaces con contexto claro\n   - Headings en orden jerárquico\n   - Listas estructuradas correctamente\n\n3. Proporciona sugerencias específicas para mejorar la accesibilidad\n4. Prioriza los componentes más críticos (formularios, navegación, CTAs)\n\nSigue los estándares WCAG 2.1 AA y las mejores prácticas de React para accesibilidad."
+    }
+  ],
+  "enabled": true
+}

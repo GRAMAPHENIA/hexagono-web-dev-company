@@ -1,0 +1,15 @@
+{
+  "name": "Database Manager",
+  "description": "Gestiona operaciones de base de datos con Prisma",
+  "trigger": {
+    "type": "manual",
+    "buttonText": "🗄️ DB Manager"
+  },
+  "actions": [
+    {
+      "type": "agent_prompt",
+      "prompt": "Voy a ayudarte con operaciones de base de datos usando Prisma:\n\n**Opciones disponibles:**\n\n1. **Generar migración**:\n   - Crear nueva migración basada en cambios del schema\n   - Aplicar migración a la base de datos\n   - Verificar estado de migraciones\n\n2. **Seed de datos**:\n   - Crear datos de prueba para desarrollo\n   - Poblar tablas con datos iniciales\n   - Limpiar y resetear datos de desarrollo\n\n3. **Schema management**:\n   - Validar schema de Prisma\n   - Generar cliente de Prisma\n   - Sincronizar schema con base de datos\n\n4. **Consultas y debugging**:\n   - Ejecutar consultas de prueba\n   - Verificar conexión a base de datos\n   - Analizar performance de queries\n\n**Pregúntame qué operación necesitas realizar.**\n\nSeguiré las convenciones del proyecto:\n- Nombres de tablas y columnas en inglés\n- Datos de ejemplo en español (contenido de usuario)\n- Logs en inglés para debugging"
+    }
+  ],
+  "enabled": true
+}

@@ -95,7 +95,7 @@ export default function TestimonialsPage() {
             <Badge variant="secondary" className="text-sm">
               Testimonios de Clientes
             </Badge>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight">
               Lo que dicen nuestros <span className="text-primary">clientes</span>
             </h1>
             <p className="text-xl text-muted-foreground">

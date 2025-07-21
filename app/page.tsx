@@ -20,7 +20,7 @@ export default function HomePage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight">
                 Soluciones web que <span className="text-[#1E2940] dark:text-primary">impulsan</span> tu negocio
               </h1>
               <p className="text-xl text-muted-foreground">

@@ -1,0 +1,24 @@
+{
+  "name": "Lint and Format Code",
+  "description": "Ejecuta linting y formateo automático en archivos de código",
+  "trigger": {
+    "type": "manual",
+    "buttonText": "🔧 Lint & Format"
+  },
+  "actions": [
+    {
+      "type": "shell_command",
+      "command": "npm run lint",
+      "workingDirectory": ".",
+      "showOutput": true
+    },
+    {
+      "type": "shell_command",
+      "command": "npm run type-check",
+      "workingDirectory": ".",
+      "showOutput": true
+    }
+  ],
+  "enabled": true,
+  "autoApprove": false
+}

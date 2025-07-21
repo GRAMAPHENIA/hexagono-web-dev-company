@@ -1,0 +1,15 @@
+{
+  "name": "Deployment Helper",
+  "description": "Asiste con deployment y configuración de producción",
+  "trigger": {
+    "type": "manual",
+    "buttonText": "🚀 Deploy Helper"
+  },
+  "actions": [
+    {
+      "type": "agent_prompt",
+      "prompt": "Te ayudo con el deployment y configuración de producción para Hexágono Web:\n\n**Opciones disponibles:**\n\n1. **Pre-deployment checks**:\n   - Verificar que todos los tests pasen\n   - Validar variables de entorno\n   - Revisar configuración de producción\n   - Verificar build sin errores\n\n2. **Vercel deployment**:\n   - Configurar variables de entorno en Vercel\n   - Revisar configuración de dominios\n   - Configurar redirects y rewrites\n   - Optimizar configuración de Next.js\n\n3. **Database deployment**:\n   - Ejecutar migraciones de producción\n   - Configurar connection pooling\n   - Verificar backups automáticos\n   - Configurar monitoring de DB\n\n4. **Monitoring y logging**:\n   - Configurar Sentry para error tracking\n   - Configurar analytics y métricas\n   - Configurar health checks\n   - Configurar alertas de performance\n\n5. **Security checklist**:\n   - Verificar HTTPS y certificados\n   - Revisar headers de seguridad\n   - Validar autenticación y autorización\n   - Verificar rate limiting\n\n**¿Qué aspecto del deployment necesitas configurar?**"
+    }
+  ],
+  "enabled": true
+}

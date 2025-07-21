@@ -86,7 +86,7 @@ export default function ContactPage() {
             <Badge variant="secondary" className="text-sm">
               Contacto
             </Badge>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight">
               Hablemos de tu <span className="text-primary">proyecto</span>
             </h1>
             <p className="text-xl text-muted-foreground">

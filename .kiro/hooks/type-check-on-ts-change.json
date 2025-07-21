@@ -1,0 +1,25 @@
+{
+  "name": "TypeScript Type Check",
+  "description": "Verifica tipos de TypeScript cuando se modifican archivos .ts/.tsx",
+  "trigger": {
+    "type": "file_save",
+    "patterns": [
+      "**/*.ts",
+      "**/*.tsx"
+    ],
+    "excludePatterns": [
+      "**/node_modules/**",
+      "**/.next/**"
+    ]
+  },
+  "actions": [
+    {
+      "type": "shell_command",
+      "command": "npm run type-check",
+      "workingDirectory": ".",
+      "showOutput": true
+    }
+  ],
+  "enabled": true,
+  "debounceMs": 3000
+}

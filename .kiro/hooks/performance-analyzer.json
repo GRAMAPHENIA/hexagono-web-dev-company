@@ -1,0 +1,15 @@
+{
+  "name": "Performance Analyzer",
+  "description": "Analiza y optimiza el rendimiento del sitio web",
+  "trigger": {
+    "type": "manual",
+    "buttonText": "⚡ Performance Check"
+  },
+  "actions": [
+    {
+      "type": "agent_prompt",
+      "prompt": "Por favor analiza el rendimiento del sitio web de Hexágono Web:\n\n1. **Bundle Analysis**:\n   - Revisa el tamaño de los bundles JavaScript\n   - Identifica dependencias pesadas innecesarias\n   - Sugiere optimizaciones de code splitting\n\n2. **Componentes**:\n   - Identifica componentes que podrían beneficiarse de React.memo\n   - Revisa el uso de useCallback y useMemo\n   - Verifica lazy loading de componentes pesados\n\n3. **Imágenes**:\n   - Confirma uso correcto de Next.js Image\n   - Verifica formatos optimizados (WebP, AVIF)\n   - Revisa lazy loading y priority flags\n\n4. **Core Web Vitals**:\n   - Analiza LCP (Largest Contentful Paint)\n   - Revisa CLS (Cumulative Layout Shift)\n   - Verifica FID (First Input Delay)\n\n5. **Recomendaciones específicas**:\n   - Optimizaciones de CSS (Tailwind purging)\n   - Preloading de recursos críticos\n   - Service Worker para caching\n\nProporciona recomendaciones priorizadas y código específico para implementar mejoras."
+    }
+  ],
+  "enabled": true
+}

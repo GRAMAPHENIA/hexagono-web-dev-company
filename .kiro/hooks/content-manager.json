@@ -1,0 +1,15 @@
+{
+  "name": "Content Manager",
+  "description": "Gestiona contenido del sitio web (precios, testimonios, servicios)",
+  "trigger": {
+    "type": "manual",
+    "buttonText": "📝 Content Manager"
+  },
+  "actions": [
+    {
+      "type": "agent_prompt",
+      "prompt": "Te ayudo a gestionar el contenido del sitio web de Hexágono Web:\n\n**Opciones disponibles:**\n\n1. **Actualizar precios de servicios**:\n   - Modificar precios en lib/pricing.ts\n   - Actualizar descripciones de planes\n   - Agregar o quitar características\n   - Validar formato de precios argentinos\n\n2. **Gestionar testimonios**:\n   - Agregar nuevos testimonios en lib/testimonials.ts\n   - Marcar testimonios como destacados\n   - Actualizar información de clientes\n   - Optimizar para SEO local\n\n3. **Actualizar información de servicios**:\n   - Modificar descripciones de servicios\n   - Actualizar tecnologías utilizadas\n   - Cambiar información de contacto\n   - Actualizar metadatos SEO\n\n4. **Gestionar contenido de páginas**:\n   - Actualizar textos de páginas existentes\n   - Optimizar contenido para SEO argentino\n   - Revisar y corregir textos en español\n   - Actualizar calls-to-action\n\n5. **Configuración del sitio**:\n   - Actualizar lib/site-config.ts\n   - Modificar navegación y footer\n   - Cambiar información de contacto\n   - Actualizar redes sociales\n\n**¿Qué contenido necesitas actualizar?**"
+    }
+  ],
+  "enabled": true
+}

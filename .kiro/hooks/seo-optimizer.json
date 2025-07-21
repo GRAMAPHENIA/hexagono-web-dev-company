@@ -1,0 +1,16 @@
+{
+  "name": "SEO Optimizer",
+  "description": "Optimiza metadatos y SEO de páginas Next.js",
+  "trigger": {
+    "type": "file_save",
+    "patterns": ["app/**/page.tsx", "app/**/layout.tsx"],
+    "excludePatterns": ["node_modules/**", ".next/**"]
+  },
+  "actions": [
+    {
+      "type": "agent_prompt",
+      "prompt": "Se ha guardado una página o layout de Next.js. Por favor revisa y optimiza el SEO:\n\n1. Verifica que tenga metadatos apropiados (title, description, keywords)\n2. Asegúrate de que el título sea descriptivo y contenga palabras clave relevantes\n3. Verifica que la descripción sea atractiva y tenga entre 150-160 caracteres\n4. Confirma que tenga Open Graph y Twitter Cards configurados\n5. Para páginas en español argentino, verifica el locale correcto\n6. Sugiere mejoras específicas si es necesario\n\nArchivo: {{file_path}}\n\nContexto: Hexágono Web es una empresa argentina de desarrollo web y gestión de redes sociales. Los servicios principales son Landing Pages ($170.000 ARS), Web Corporativa ($250.000 ARS) y Tienda Online ($370.000 ARS)."
+    }
+  ],
+  "enabled": true
+}

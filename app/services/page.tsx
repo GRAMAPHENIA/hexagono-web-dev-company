@@ -15,7 +15,7 @@ export default function ServicesPage() {
             <Badge variant="secondary" className="text-sm">
               Nuestros Servicios
             </Badge>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight">
               Soluciones digitales <span className="text-primary">completas</span>
             </h1>
             <p className="text-xl text-muted-foreground">

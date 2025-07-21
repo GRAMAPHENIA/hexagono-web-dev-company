@@ -1,0 +1,16 @@
+{
+  "name": "Auto Test on Save",
+  "description": "Ejecuta tests automáticamente cuando se guarda un archivo de código",
+  "trigger": {
+    "type": "file_save",
+    "patterns": ["**/*.{ts,tsx,js,jsx}"],
+    "excludePatterns": ["node_modules/**", ".next/**", "dist/**"]
+  },
+  "actions": [
+    {
+      "type": "agent_prompt",
+      "prompt": "Un archivo de código ha sido guardado. Por favor:\n\n1. Ejecuta los tests relacionados con este archivo\n2. Si hay errores, muestra un resumen claro\n3. Si los tests pasan, confirma brevemente\n4. Si es un componente nuevo, sugiere crear tests si no existen\n\nArchivo modificado: {{file_path}}"
+    }
+  ],
+  "enabled": true
+}

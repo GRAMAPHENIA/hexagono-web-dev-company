@@ -1,0 +1,15 @@
+{
+  "name": "Generate React Component",
+  "description": "Genera un nuevo componente React siguiendo los estándares del proyecto",
+  "trigger": {
+    "type": "manual",
+    "buttonText": "⚛️ New Component"
+  },
+  "actions": [
+    {
+      "type": "agent_prompt",
+      "prompt": "Voy a ayudarte a crear un nuevo componente React. Por favor:\n\n1. Pregúntame el nombre del componente y su propósito\n2. Determina si debe ir en `/components/ui` (componente base) o `/components/features` (específico)\n3. Crea el componente siguiendo estos estándares:\n   - TypeScript con interfaces tipadas\n   - Usar Tailwind CSS para estilos\n   - Incluir props de accesibilidad apropiadas\n   - Seguir el patrón de composición si es complejo\n   - Usar class-variance-authority para variantes si aplica\n4. Crea un test básico en `__tests__/components/`\n5. Actualiza el archivo de exportación si es necesario\n\nSigue las guías de componentes UI del proyecto y los estándares de codificación establecidos."
+    }
+  ],
+  "enabled": true
+}

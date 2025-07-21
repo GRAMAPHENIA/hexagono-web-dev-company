@@ -57,7 +57,7 @@ export default function AboutPage() {
             <Badge variant="secondary" className="text-sm">
               Sobre Hexágono
             </Badge>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight">
               Transformamos ideas en <span className="text-primary">realidad digital</span>
             </h1>
             <p className="text-xl text-muted-foreground">
@@ -245,7 +245,7 @@ export default function AboutPage() {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
-            {["React", "Next.js", "WordPress", "Shopify", "Figma", "Photoshop"].map((tech, index) => (
+            {["React", "Next.js", "Typescript", "Tailwind", "Ilustrator", "Photoshop"].map((tech, index) => (
               <Card key={index} className="p-6 text-center hover:shadow-lg transition-shadow">
                 <CardContent className="p-0 space-y-2">
                   <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto">
