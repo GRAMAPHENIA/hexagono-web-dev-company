@@ -15,6 +15,7 @@ Sitio web corporativo de Hexágono Web, empresa especializada en desarrollo web 
 ## 🛠️ Stack Tecnológico
 
 ### Frontend
+
 - **Next.js 15** - Framework React con App Router
 - **React 19** - Biblioteca de UI
 - **TypeScript** - Tipado estático
@@ -22,18 +23,20 @@ Sitio web corporativo de Hexágono Web, empresa especializada en desarrollo web 
 - **Radix UI** - Componentes accesibles y sin estilos
 
 ### Herramientas de Desarrollo
+
 - **ESLint** - Linting de código
 - **Prettier** - Formateo de código
 - **Jest** - Testing framework
 - **Testing Library** - Utilidades de testing para React
 
 ### Deployment
+
 - **Vercel** - Plataforma de deployment (recomendado)
 - **Next.js Static Export** - Generación de sitio estático
 
 ## 📁 Estructura del Proyecto
 
-```
+```bash
 ├── app/                    # App Router de Next.js
 │   ├── about/             # Página "Acerca de"
 │   ├── contact/           # Página de contacto
@@ -59,19 +62,19 @@ Sitio web corporativo de Hexágono Web, empresa especializada en desarrollo web 
 
 ```bash
 # Desarrollo
-npm run dev          # Inicia el servidor de desarrollo
-npm run build        # Construye la aplicación para producción
-npm run start        # Inicia el servidor de producción
-npm run lint         # Ejecuta ESLint
-npm run lint:report  # Reporte de linting sin auto-fix
+pnpm run dev          # Inicia el servidor de desarrollo
+pnpm run build        # Construye la aplicación para producción
+pnpm run start        # Inicia el servidor de producción
+pnpm run lint         # Ejecuta ESLint
+pnpm run lint:report  # Reporte de linting sin auto-fix
 
 # Testing
-npm run test         # Ejecuta los tests
-npm run test:watch   # Ejecuta tests en modo watch
-npm run test:coverage # Ejecuta tests con reporte de cobertura
+pnpm run test         # Ejecuta los tests
+pnpm run test:watch   # Ejecuta tests en modo watch
+pnpm run test:coverage # Ejecuta tests con reporte de cobertura
 
 # Utilidades
-npm run type-check   # Verifica tipos de TypeScript
+pnpm run type-check   # Verifica tipos de TypeScript
 ```
 
 ## 🔧 Configuración de Desarrollo
@@ -104,10 +107,10 @@ NEXT_PUBLIC_YANDEX_VERIFICATION="tu-codigo-de-verificacion"
 
 ```bash
 # Instalar dependencias
-npm install
+pnpm install
 
 # Iniciar desarrollo
-npm run dev
+pnpm run dev
 ```
 
 ## 🧪 Testing
@@ -116,18 +119,19 @@ El proyecto incluye configuración completa de testing:
 
 ```bash
 # Ejecutar todos los tests
-npm run test
+pnpm run test
 
 # Tests en modo watch
-npm run test:watch
+pnpm run test:watch
 
 # Cobertura de código
-npm run test:coverage
+pnpm run test:coverage
 ```
 
 ## 📱 Responsive Design
 
 El sitio está optimizado para:
+
 - **Desktop** (1024px+)
 - **Tablet** (768px - 1023px)
 - **Mobile** (320px - 767px)
@@ -135,6 +139,7 @@ El sitio está optimizado para:
 ## 🎨 Personalización de Tema
 
 El sitio soporta tema claro y oscuro usando `next-themes`. Los colores se pueden personalizar en:
+
 - `tailwind.config.ts` - Configuración de colores
 - `app/globals.css` - Variables CSS personalizadas
 
@@ -150,14 +155,16 @@ El sitio soporta tema claro y oscuro usando `next-themes`. Los colores se pueden
 ## 🚀 Deployment
 
 ### Vercel (Recomendado)
+
 1. Conecta tu repositorio a Vercel
 2. Configura las variables de entorno
 3. Deploy automático en cada push
 
 ### Otros Proveedores
+
 ```bash
 # Build para producción
-npm run build
+pnpm run build
 
 # Los archivos estáticos estarán en .next/
 ```
@@ -176,10 +183,10 @@ Este proyecto es propiedad de Hexágono Web. Todos los derechos reservados.
 
 ## 📞 Contacto
 
-- **Email**: contacto@hexagono.xyz
+- **Email**: <contacto@hexagono.xyz>  
 - **Teléfono**: +54 11 2378-2307
 - **WhatsApp**: +54 9 11 2378-2307
-- **Sitio Web**: https://hexagono.xyz
+- **Sitio Web**: <https://hexagono.xyz>
 
 ---
 
