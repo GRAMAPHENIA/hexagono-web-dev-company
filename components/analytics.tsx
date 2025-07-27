@@ -2,10 +2,10 @@
 
 import Script from 'next/script'
 import { usePathname, useSearchParams } from 'next/navigation'
-import { useEffect } from 'react'
+import { Suspense, useEffect } from 'react'
 import { GA_MEASUREMENT_ID, pageview } from '@/lib/analytics'
 
-export function Analytics() {
+function AnalyticsContent() {
   const pathname = usePathname()
   const searchParams = useSearchParams()
 
@@ -39,5 +39,13 @@ export function Analytics() {
         }}
       />
     </>
+  )
+}
+
+export function Analytics() {
+  return (
+    <Suspense fallback={null}>
+      <AnalyticsContent />
+    </Suspense>
   )
 }
