@@ -1,13 +1,26 @@
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { CTAButton } from "@/components/ui/cta-button"
-import { PlanCard } from "@/components/ui/plan-card"
-import { QuoteBox } from "@/components/ui/quote-box"
-import Link from "next/link"
-import { ArrowRight, Globe, Users, Zap, Shield, Star, Quote, Code } from "lucide-react"
-import { webPlans, socialPlans, formatPrice } from "@/lib/pricing"
-import { getFeaturedTestimonials } from "@/lib/testimonials"
-import { getTechnologies } from "@/lib/technologies"
+import { Button } from '@/components/ui/button'
+import { Card, CardContent } from '@/components/ui/card'
+import { CTAButton } from '@/components/ui/cta-button'
+import { PlanCard } from '@/components/ui/plan-card'
+import { QuoteBox } from '@/components/ui/quote-box'
+import Link from 'next/link'
+import {
+  ArrowRight,
+  Globe,
+  Users,
+  Zap,
+  Shield,
+  Star,
+  Quote,
+  Code,
+  Sparkles,
+  PenTool,
+  Smartphone,
+} from 'lucide-react'
+import { webPlans, socialPlans, formatPrice } from '@/lib/pricing'
+import { getFeaturedTestimonials } from '@/lib/testimonials'
+import { getTechnologies } from '@/lib/technologies'
+import Image from 'next/image'
 
 const testimonials = getFeaturedTestimonials()
 const technologies = getTechnologies()
@@ -15,28 +28,70 @@ const technologies = getTechnologies()
 export default function HomePage() {
   return (
     <div className="space-y-20">
-      {/* Hero Section */}
-      <section className="py-20 lg:py-32">
+      {/* Hero Section - Versión Mejorada */}
+      <section className="relative py-16 md:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
-              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight">
-                Soluciones web que <span className="text-[#1E2940] dark:text-primary">impulsan</span> tu negocio
+              {/* Badge de confianza */}
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 text-primary text-sm font-medium border border-border">
+                <Sparkles className="h-4 w-4" />
+                <span>Soluciones digitales a medida</span>
+              </div>
+
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">
+                Transformamos tu{' '}
+                <span className="bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
+                  presencia digital
+                </span>
               </h1>
+
               <p className="text-xl text-muted-foreground">
-                Diseño profesional, precios accesibles, soporte real. Transformamos tu presencia digital con sitios web
-                modernos y gestión estratégica de redes sociales.
+                Creamos experiencias web excepcionales que destacan tu marca y conectan con tu
+                audiencia.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <CTAButton href="/services">Ver Planes</CTAButton>
-                <Button size="lg" variant="outline" asChild>
-                  <Link href="/contact">Contactar</Link>
+
+              <div className="flex flex-col sm:flex-row gap-4 pt-2">
+                <CTAButton href="/contact">
+                  Comenzar proyecto
+                </CTAButton>
+                <Button variant="outline" size="lg" asChild>
+                  <Link href="/services" className="flex items-center gap-2">
+                    Ver servicios
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
                 </Button>
               </div>
+
+              {/* Beneficios en formato tarjeta sutil */}
+              <div className="grid grid-cols-2 gap-4 pt-4">
+                <div className="p-4 rounded-lg bg-muted/30 border border-border/50 flex items-start gap-3">
+                  <div className="p-2 bg-primary/10 rounded-lg">
+                    <PenTool className="h-5 w-5 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-medium">Diseño personalizado</h3>
+                    <p className="text-sm text-muted-foreground">Hecho a tu medida</p>
+                  </div>
+                </div>
+                <div className="p-4 rounded-lg bg-muted/30 border border-border/50 flex items-start gap-3">
+                  <div className="p-2 bg-primary/10 rounded-lg">
+                    <Smartphone className="h-5 w-5 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-medium">Totalmente adaptable</h3>
+                    <p className="text-sm text-muted-foreground">En cualquier dispositivo</p>
+                  </div>
+                </div>
+              </div>
             </div>
+
             <div className="relative">
-              <div className="w-full h-96 bg-gradient-to-br from-primary/10 to-primary/5 rounded-lg flex items-center justify-center">
-                <Globe className="h-32 w-32 text-primary/30" />
+              <div className="relative w-full h-96 bg-gradient-to-br from-primary/5 to-primary/10 rounded-2xl overflow-hidden border border-border/50">
+                {/* Placeholder para la imagen/ilustración */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <Globe className="h-40 w-40 text-primary/30" />
+                </div>
               </div>
             </div>
           </div>
@@ -58,7 +113,7 @@ export default function HomePage() {
             <div>
               <h3 className="text-2xl font-bold mb-8 text-center">Sitios Web</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {webPlans.map((plan) => (
+                {webPlans.map(plan => (
                   <PlanCard
                     key={plan.id}
                     title={plan.title}
@@ -74,7 +129,7 @@ export default function HomePage() {
             <div>
               <h3 className="text-2xl font-bold mb-8 text-center">Gestión de Redes Sociales</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {socialPlans.map((plan) => (
+                {socialPlans.map(plan => (
                   <PlanCard
                     key={plan.id}
                     title={plan.title}
@@ -91,7 +146,9 @@ export default function HomePage() {
           <QuoteBox title="Aclaraciones Importantes">
             <ul className="space-y-2 text-sm">
               <li>• Hosting y dominio no incluidos por defecto (excepto en Tienda Online)</li>
-              <li>• Los planes no incluyen mantenimiento continuo (disponible como servicio opcional)</li>
+              <li>
+                • Los planes no incluyen mantenimiento continuo (disponible como servicio opcional)
+              </li>
               <li>• Todos los servicios son adaptables a necesidades personalizadas</li>
               <li>• Precios en pesos argentinos, sujetos a modificación</li>
             </ul>
@@ -140,7 +197,9 @@ export default function HomePage() {
                   <Users className="h-6 w-6 text-primary" />
                 </div>
                 <h3 className="text-lg font-semibold">Precios Accesibles</h3>
-                <p className="text-sm text-muted-foreground">Calidad profesional a precios justos y transparentes.</p>
+                <p className="text-sm text-muted-foreground">
+                  Calidad profesional a precios justos y transparentes.
+                </p>
               </CardContent>
             </Card>
 
@@ -170,7 +229,7 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial) => (
+            {testimonials.map(testimonial => (
               <Card key={testimonial.id} className="p-6 hover:shadow-lg transition-shadow relative">
                 <CardContent className="p-0 space-y-4">
                   <Quote className="h-8 w-8 text-primary/20 absolute top-4 right-4" />
@@ -179,10 +238,14 @@ export default function HomePage() {
                       <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
                     ))}
                   </div>
-                  <blockquote className="text-muted-foreground italic">"{testimonial.content}"</blockquote>
+                  <blockquote className="text-muted-foreground italic">
+                    "{testimonial.content}"
+                  </blockquote>
                   <div className="flex items-center space-x-3 pt-4">
-                    <img
-                      src={testimonial.avatar || "/placeholder-user.jpg"}
+                    <Image
+                      width={40}
+                      height={40}
+                      src={testimonial.avatar || '/placeholder-user.jpg'}
                       alt={testimonial.name}
                       className="w-12 h-12 rounded-full object-cover"
                     />
@@ -206,7 +269,8 @@ export default function HomePage() {
           <div className="max-w-3xl mx-auto text-center space-y-8">
             <h2 className="text-3xl sm:text-4xl font-bold">¿Listo para hacer crecer tu negocio?</h2>
             <p className="text-xl opacity-90">
-              Conversemos sobre tu proyecto y descubre cómo podemos ayudarte a alcanzar tus objetivos digitales.
+              Conversemos sobre tu proyecto y descubre cómo podemos ayudarte a alcanzar tus
+              objetivos digitales.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" variant="secondary" asChild>
@@ -239,17 +303,20 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
-            {technologies.map((tech) => {
-              const IconComponent = tech.icon;
+            {technologies.map(tech => {
+              const IconComponent = tech.icon
               return (
-                <div key={tech.id} className="flex flex-col items-center p-4 bg-card rounded-lg hover:shadow-md transition-shadow h-full group">
+                <div
+                  key={tech.id}
+                  className="flex flex-col items-center p-4 bg-card rounded-lg hover:shadow-md transition-shadow h-full group"
+                >
                   <div className="flex items-center justify-center h-14 w-14 mb-3 bg-primary/10 rounded-full group-hover:bg-primary/20 transition-colors">
                     <IconComponent className="h-8 w-8 text-primary" />
                   </div>
                   <h3 className="text-sm font-medium text-center mb-2">{tech.name}</h3>
                   <p className="text-xs text-muted-foreground text-center">{tech.description}</p>
                 </div>
-              );
+              )
             })}
           </div>
 
