@@ -2,8 +2,6 @@
 
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
-import { CTAButton } from '@/components/ui/cta-button'
-import { PlanCard } from '@/components/ui/plan-card'
 import { QuoteBox } from '@/components/ui/quote-box'
 import Link from 'next/link'
 import {
@@ -13,7 +11,6 @@ import {
   Zap,
   Shield,
   Star,
-  Quote,
   Code,
   Sparkles,
   PenTool,
@@ -25,8 +22,7 @@ import {
 import { webPlans, socialPlans, formatPrice } from '@/lib/pricing'
 import { getFeaturedTestimonials } from '@/lib/testimonials'
 import { getTechnologies } from '@/lib/technologies'
-import Image from 'next/image'
-import { MessageCircle, ChevronLeft, ChevronRight, Quote as QuoteIcon, User } from 'lucide-react'
+import { MessageCircle, ChevronLeft, ChevronRight, User, Quote } from 'lucide-react'
 import { useRef, useState, useEffect } from 'react'
 
 const testimonials = getFeaturedTestimonials()
@@ -194,13 +190,21 @@ export default function HomePage() {
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {webPlans.map(plan => (
-                  <PlanCard
-                    key={plan.id}
-                    title={plan.title}
-                    price={formatPrice(plan.price, plan.currency)}
-                    popular={plan.popular}
-                    features={plan.features}
-                  />
+                  <Card key={plan.id} className="p-6">
+                    <CardContent>
+                      <h3 className="text-xl font-bold">{plan.title}</h3>
+                      <p className="text-3xl font-bold my-4">{formatPrice(plan.price)}</p>
+                      <ul className="space-y-2 mb-6">
+                        {plan.features.map((feature, i) => (
+                          <li key={i} className="flex items-center gap-2">
+                            <CheckCircle className="h-4 w-4 text-green-500" />
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                      <Button className="w-full">Contratar</Button>
+                    </CardContent>
+                  </Card>
                 ))}
               </div>
             </div>
@@ -221,13 +225,21 @@ export default function HomePage() {
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {socialPlans.map(plan => (
-                  <PlanCard
-                    key={plan.id}
-                    title={plan.title}
-                    price={formatPrice(plan.price, plan.currency)}
-                    popular={plan.popular}
-                    features={plan.features}
-                  />
+                  <Card key={plan.id} className="p-6">
+                    <CardContent>
+                      <h3 className="text-xl font-bold">{plan.title}</h3>
+                      <p className="text-3xl font-bold my-4">{formatPrice(plan.price)}</p>
+                      <ul className="space-y-2 mb-6">
+                        {plan.features.map((feature, i) => (
+                          <li key={i} className="flex items-center gap-2">
+                            <CheckCircle className="h-4 w-4 text-green-500" />
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                      <Button className="w-full">Contratar</Button>
+                    </CardContent>
+                  </Card>
                 ))}
               </div>
             </div>
@@ -266,7 +278,8 @@ export default function HomePage() {
           </div>
 
           {/* Notas importantes */}
-          <QuoteBox title="Información importante" className="mt-16">
+          <QuoteBox>
+            <div className="text-lg font-semibold mb-2">Información importante</div>
             <ul className="space-y-2 text-sm">
               <li className="flex items-start gap-2">
                 <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
@@ -383,7 +396,7 @@ export default function HomePage() {
                 >
                   <div className="h-full bg-background border border-border/50 rounded-xl p-8 flex flex-col hover:shadow-md transition-all max-w-2xl mx-auto">
                     <div className="mb-6 text-primary/80">
-                      <QuoteIcon className="h-7 w-7 opacity-20" />
+                      <Quote className="h-7 w-7 opacity-20" />
                     </div>
 
                     <blockquote className="text-lg text-foreground/90 leading-relaxed mb-8 flex-grow">
