@@ -72,69 +72,93 @@ export default function HomePage() {
   return (
     <div className="space-y-20">
       {/* Hero Section - Versión Mejorada */}
-      <section className="relative py-16 md:py-24">
+      <section className="relative py-16 md:py-20 overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
-              {/* Badge de confianza */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 text-primary text-sm font-medium border border-border">
+          <div className="relative">
+            {/* Contenido principal con superposición */}
+            <div className="relative z-10 max-w-2xl">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 text-primary text-sm font-medium border border-border mb-8">
                 <Sparkles className="h-4 w-4" />
-                <span>Soluciones digitales a medida</span>
+                <span>Innovación Digital</span>
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">
-                Transformamos tu{' '}
-                <span className="bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
-                  presencia digital
-                </span>
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
+                Transformamos
+                <span className="text-primary block">tu visión</span>
+                en realidad digital
               </h1>
 
-              <p className="text-xl text-muted-foreground">
-                Creamos experiencias web excepcionales que destacan tu marca y conectan con tu
-                audiencia.
+              <p className="text-lg text-muted-foreground max-w-lg mb-8">
+                Soluciones web personalizadas que impulsan el crecimiento de tu negocio en la era
+                digital.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 pt-2">
-                <CTAButton href="/contact">Comenzar proyecto</CTAButton>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button size="lg" className="px-8" asChild>
+                  <Link href="/contact">Iniciar Proyecto</Link>
+                </Button>
                 <Button variant="outline" size="lg" asChild>
-                  <Link href="/services" className="flex items-center gap-2">
+                  <Link href="/services" className="flex items-center gap-2 group">
                     Ver servicios
-                    <ArrowRight className="h-4 w-4" />
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Link>
                 </Button>
               </div>
+            </div>
 
-              {/* Beneficios en formato tarjeta sutil */}
-              <div className="grid grid-cols-2 gap-4 pt-4">
-                <div className="p-4 rounded-lg bg-muted/30 border border-border/50 flex items-start gap-3">
-                  <div className="p-2 bg-primary/10 rounded-lg">
-                    <PenTool className="h-5 w-5 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-medium">Diseño personalizado</h3>
-                    <p className="text-sm text-muted-foreground">Hecho a tu medida</p>
-                  </div>
-                </div>
-                <div className="p-4 rounded-lg bg-muted/30 border border-border/50 flex items-start gap-3">
-                  <div className="p-2 bg-primary/10 rounded-lg">
-                    <Smartphone className="h-5 w-5 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-medium">Totalmente adaptable</h3>
-                    <p className="text-sm text-muted-foreground">En cualquier dispositivo</p>
-                  </div>
+            {/* Elemento decorativo que rompe la cuadrícula */}
+            <div className="absolute -right-20 top-1/2 -translate-y-1/2 w-[600px] h-[500px] bg-gradient-to-br from-primary/5 to-primary/10 rounded-tl-[100px] rounded-br-[100px] -rotate-12 opacity-80 hidden lg:block">
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center p-8 max-w-xs">
+                  <Code className="h-12 w-12 mx-auto text-primary mb-4" />
+                  <h3 className="text-xl font-semibold mb-2">Tecnología de Vanguardia</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Soluciones innovadoras para desafíos modernos
+                  </p>
                 </div>
               </div>
             </div>
+          </div>
 
-            <div className="relative">
-              <div className="relative w-full h-96 bg-gradient-to-br from-primary/5 to-primary/10 rounded-2xl overflow-hidden border border-border/50">
-                {/* Placeholder para la imagen/ilustración */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <Globe className="h-40 w-40 text-primary/30" />
+          {/* Tarjetas flotantes */}
+          <div className="mt-24 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-20">
+            {[
+              {
+                title: 'Diseño',
+                description: 'Interfaces intuitivas y atractivas',
+                icon: <PenTool className="h-6 w-6" />,
+                className: 'lg:-translate-y-10',
+              },
+              {
+                title: 'Desarrollo',
+                description: 'Código limpio y mantenible',
+                icon: <Code className="h-6 w-6" />,
+                className: 'lg:translate-y-10',
+              },
+              {
+                title: 'Rendimiento',
+                description: 'Carga ultrarrápida',
+                icon: <Zap className="h-6 w-6" />,
+                className: 'lg:-translate-y-10',
+              },
+              {
+                title: 'Soporte',
+                description: 'Asistencia continua',
+                icon: <Shield className="h-6 w-6" />,
+                className: 'lg:translate-y-10',
+              },
+            ].map((item, index) => (
+              <div
+                key={index}
+                className={`bg-background border border-border/50 rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 ${item.className}`}
+              >
+                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-4">
+                  {item.icon}
                 </div>
+                <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
+                <p className="text-muted-foreground text-sm">{item.description}</p>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
