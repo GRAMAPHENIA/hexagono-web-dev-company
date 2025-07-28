@@ -16,6 +16,9 @@ import {
   Sparkles,
   PenTool,
   Smartphone,
+  Monitor,
+  BarChart,
+  CheckCircle,
 } from 'lucide-react'
 import { webPlans, socialPlans, formatPrice } from '@/lib/pricing'
 import { getFeaturedTestimonials } from '@/lib/testimonials'
@@ -52,9 +55,7 @@ export default function HomePage() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 pt-2">
-                <CTAButton href="/contact">
-                  Comenzar proyecto
-                </CTAButton>
+                <CTAButton href="/contact">Comenzar proyecto</CTAButton>
                 <Button variant="outline" size="lg" asChild>
                   <Link href="/services" className="flex items-center gap-2">
                     Ver servicios
@@ -98,21 +99,36 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Services Preview */}
+      {/* Services Preview - Mejorada */}
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-4 mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold">Nuestros Servicios</h2>
+            <div className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-primary/5 text-primary text-sm font-medium mb-4">
+              <Zap className="h-4 w-4" />
+              <span>Nuestras soluciones</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-bold">Servicios Profesionales</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Soluciones completas para tu presencia digital
+              Soluciones digitales personalizadas para hacer crecer tu negocio
             </p>
           </div>
 
           {/* Web Services */}
-          <div className="space-y-12">
-            <div>
-              <h3 className="text-2xl font-bold mb-8 text-center">Sitios Web</h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="space-y-16">
+            <div className="bg-background rounded-2xl p-8 shadow-sm border border-border/50">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8 gap-6">
+                <div className="flex items-center gap-4">
+                  <div className="p-3 bg-primary/10 rounded-lg">
+                    <Monitor className="h-8 w-8 text-primary" />
+                  </div>
+                  <h3 className="text-2xl font-bold">Desarrollo Web</h3>
+                </div>
+                <p className="text-muted-foreground max-w-2xl">
+                  Creamos sitios web rápidos, seguros y optimizados para conversiones.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {webPlans.map(plan => (
                   <PlanCard
                     key={plan.id}
@@ -126,9 +142,20 @@ export default function HomePage() {
             </div>
 
             {/* Social Media Services */}
-            <div>
-              <h3 className="text-2xl font-bold mb-8 text-center">Gestión de Redes Sociales</h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-background rounded-2xl p-8 shadow-sm border border-border/50">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8 gap-6">
+                <div className="flex items-center gap-4">
+                  <div className="p-3 bg-primary/10 rounded-lg">
+                    <Smartphone className="h-8 w-8 text-primary" />
+                  </div>
+                  <h3 className="text-2xl font-bold">Redes Sociales</h3>
+                </div>
+                <p className="text-muted-foreground max-w-2xl">
+                  Gestionamos tu presencia en redes sociales con estrategias efectivas.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {socialPlans.map(plan => (
                   <PlanCard
                     key={plan.id}
@@ -142,15 +169,59 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Important Notes */}
-          <QuoteBox title="Aclaraciones Importantes">
+          {/* Beneficios adicionales */}
+          <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              {
+                title: 'Diseño Responsivo',
+                description: 'Perfecto en todos los dispositivos',
+                icon: <Smartphone className="h-6 w-6 text-primary" />,
+              },
+              {
+                title: 'Rendimiento',
+                description: 'Carga rápida y optimizada',
+                icon: <Zap className="h-6 w-6 text-primary" />,
+              },
+              {
+                title: 'Resultados',
+                description: 'Enfoque en conversiones',
+                icon: <BarChart className="h-6 w-6 text-primary" />,
+              },
+            ].map((item, index) => (
+              <div
+                key={index}
+                className="bg-background p-6 rounded-xl border border-border/50 flex items-start gap-4"
+              >
+                <div className="p-2 bg-primary/10 rounded-lg">{item.icon}</div>
+                <div>
+                  <h3 className="font-semibold text-lg">{item.title}</h3>
+                  <p className="text-muted-foreground text-sm">{item.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Notas importantes */}
+          <QuoteBox title="Información importante" className="mt-16">
             <ul className="space-y-2 text-sm">
-              <li>• Hosting y dominio no incluidos por defecto (excepto en Tienda Online)</li>
-              <li>
-                • Los planes no incluyen mantenimiento continuo (disponible como servicio opcional)
+              <li className="flex items-start gap-2">
+                <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                <span>Hosting y dominio no incluidos por defecto (excepto en Tienda Online)</span>
               </li>
-              <li>• Todos los servicios son adaptables a necesidades personalizadas</li>
-              <li>• Precios en pesos argentinos, sujetos a modificación</li>
+              <li className="flex items-start gap-2">
+                <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                <span>
+                  Los planes no incluyen mantenimiento continuo (disponible como servicio opcional)
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                <span>Todos los servicios son adaptables a necesidades personalizadas</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                <span>Precios en pesos argentinos, sujetos a modificación</span>
+              </li>
             </ul>
           </QuoteBox>
         </div>
