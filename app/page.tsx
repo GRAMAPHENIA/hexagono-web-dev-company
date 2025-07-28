@@ -1,3 +1,5 @@
+'use client'
+
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { CTAButton } from '@/components/ui/cta-button'
@@ -24,11 +26,49 @@ import { webPlans, socialPlans, formatPrice } from '@/lib/pricing'
 import { getFeaturedTestimonials } from '@/lib/testimonials'
 import { getTechnologies } from '@/lib/technologies'
 import Image from 'next/image'
+import { MessageCircle, ChevronLeft, ChevronRight, Quote as QuoteIcon, User } from 'lucide-react'
+import { useRef, useState, useEffect } from 'react'
 
 const testimonials = getFeaturedTestimonials()
 const technologies = getTechnologies()
 
 export default function HomePage() {
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const sliderRef = useRef<HTMLDivElement>(null)
+  const [isHovered, setIsHovered] = useState(false)
+
+  const nextSlide = () => {
+    setCurrentSlide(prev => (prev === testimonials.length - 1 ? 0 : prev + 1))
+  }
+
+  const prevSlide = () => {
+    setCurrentSlide(prev => (prev === 0 ? testimonials.length - 1 : prev - 1))
+  }
+
+  // Auto-avance cada 5 segundos
+  useEffect(() => {
+    if (!isHovered) {
+      const timer = setTimeout(() => {
+        nextSlide()
+      }, 5000)
+      return () => clearTimeout(timer)
+    }
+  }, [currentSlide, isHovered])
+
+  // Efecto para manejar el scroll suave al cambiar de slide
+  useEffect(() => {
+    if (sliderRef.current) {
+      const container = sliderRef.current
+      const card = container.querySelector(`[data-slide="${currentSlide}"]`) as HTMLElement
+      if (card) {
+        container.scrollTo({
+          left: card.offsetLeft - (container.offsetWidth - card.offsetWidth) / 2,
+          behavior: 'smooth',
+        })
+      }
+    }
+  }, [currentSlide])
+
   return (
     <div className="space-y-20">
       {/* Hero Section - Versión Mejorada */}
@@ -290,46 +330,107 @@ export default function HomePage() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 bg-muted/30">
+      <section className="py-20 bg-background relative">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center space-y-4 mb-16">
+          <div className="text-center space-y-4 mb-12">
+            <div className="inline-flex items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 text-primary text-xs font-medium tracking-wider uppercase">
+              <MessageCircle className="h-3.5 w-3.5" />
+              <span>Testimonios</span>
+            </div>
             <h2 className="text-3xl sm:text-4xl font-bold">Lo que dicen nuestros clientes</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Testimonios reales de empresas que confiaron en nosotros
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Historias de éxito de empresas que confiaron en nosotros
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map(testimonial => (
-              <Card key={testimonial.id} className="p-6 hover:shadow-lg transition-shadow relative">
-                <CardContent className="p-0 space-y-4">
-                  <Quote className="h-8 w-8 text-primary/20 absolute top-4 right-4" />
-                  <div className="flex items-center space-x-1 mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                    ))}
-                  </div>
-                  <blockquote className="text-muted-foreground italic">
-                    "{testimonial.content}"
-                  </blockquote>
-                  <div className="flex items-center space-x-3 pt-4">
-                    <Image
-                      width={40}
-                      height={40}
-                      src={testimonial.avatar || '/placeholder-user.jpg'}
-                      alt={testimonial.name}
-                      className="w-12 h-12 rounded-full object-cover"
-                    />
-                    <div>
-                      <div className="font-semibold">{testimonial.name}</div>
-                      <div className="text-sm text-muted-foreground">
-                        {testimonial.role} - {testimonial.company}
+          <div className="relative max-w-6xl mx-auto">
+            {/* Contenedor de testimonios */}
+            <div
+              ref={sliderRef}
+              className="flex gap-8 pb-8 overflow-x-hidden scroll-smooth snap-x snap-mandatory px-4"
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+            >
+              {testimonials.map((testimonial, index) => (
+                <div
+                  key={testimonial.id}
+                  data-slide={index}
+                  className="w-full flex-shrink-0 transition-opacity duration-300 px-4"
+                >
+                  <div className="h-full bg-background border border-border/50 rounded-xl p-8 flex flex-col hover:shadow-md transition-all max-w-2xl mx-auto">
+                    <div className="mb-6 text-primary/80">
+                      <QuoteIcon className="h-7 w-7 opacity-20" />
+                    </div>
+
+                    <blockquote className="text-lg text-foreground/90 leading-relaxed mb-8 flex-grow">
+                      "{testimonial.content}"
+                    </blockquote>
+
+                    <div className="mt-auto pt-6 border-t border-border/30">
+                      <div className="flex items-center gap-4">
+                        <div className="relative h-12 w-12 flex-shrink-0">
+                          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-gray-200 to-gray-300">
+                            <div className="absolute inset-0 flex items-center justify-center text-gray-500">
+                              <User className="h-6 w-6" />
+                            </div>
+                          </div>
+                        </div>
+                        <div className="min-w-0">
+                          <div className="font-medium text-base">{testimonial.name}</div>
+                          <div className="text-sm text-muted-foreground">
+                            {testimonial.role} • {testimonial.company}
+                          </div>
+                          <div className="flex items-center mt-1">
+                            {[...Array(5)].map((_, i) => (
+                              <Star
+                                key={i}
+                                className={`h-3.5 w-3.5 ${
+                                  i < testimonial.rating
+                                    ? 'fill-yellow-400 text-yellow-400'
+                                    : 'text-gray-200'
+                                }`}
+                              />
+                            ))}
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </CardContent>
-              </Card>
-            ))}
+                </div>
+              ))}
+            </div>
+
+            {/* Controles de navegación */}
+            <div className="flex justify-center gap-3 mt-8">
+              {testimonials.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentSlide(index)}
+                  className={`h-2 rounded-full transition-all ${
+                    index === currentSlide
+                      ? 'w-8 bg-primary'
+                      : 'w-3 bg-primary/20 hover:bg-primary/40'
+                  }`}
+                  aria-label={`Ir al testimonio ${index + 1}`}
+                />
+              ))}
+            </div>
+
+            {/* Flechas de navegación */}
+            <button
+              onClick={prevSlide}
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 z-20 h-12 w-12 flex items-center justify-center rounded-full bg-background border border-border/50 shadow-sm hover:bg-muted/50 transition-all hover:scale-110 active:scale-95"
+              aria-label="Testimonio anterior"
+            >
+              <ChevronLeft className="h-5 w-5 text-foreground/70" />
+            </button>
+            <button
+              onClick={nextSlide}
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 z-20 h-12 w-12 flex items-center justify-center rounded-full bg-background border border-border/50 shadow-sm hover:bg-muted/50 transition-all hover:scale-110 active:scale-95"
+              aria-label="Siguiente testimonio"
+            >
+              <ChevronRight className="h-5 w-5 text-foreground/70" />
+            </button>
           </div>
         </div>
       </section>
