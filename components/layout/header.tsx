@@ -66,7 +66,7 @@ export function Header() {
   const pathname = usePathname()
 
   return (
-    <header className="sticky top-4 z-50 mx-4 mt-4 rounded-lg border border-border/50 bg-background/60 backdrop-blur-sm shadow-sm transition-all duration-300">
+    <header className="sticky top-4 z-50 mx-4 mt-4 rounded-lg border border-border/50 bg-background/60 backdrop-blur-xl shadow-sm transition-all duration-300">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
           {/* Logo */}

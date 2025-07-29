@@ -1,11 +1,19 @@
-import { Layout, Server, Smartphone, Database, Palette, Cpu } from "lucide-react";
+import {
+  Layout,
+  Server,
+  Shield,
+  Code,
+  TestTube2,
+  GitCommit,
+  Layers,
+} from 'lucide-react'
 
 export interface Technology {
-  id: string;
-  name: string;
-  icon: React.ComponentType<{ className?: string }>;
-  description: string;
-  tools?: string[];
+  id: string
+  name: string
+  icon: React.ComponentType<{ className?: string }>
+  description: string
+  tools?: string[]
 }
 
 export const technologies: Technology[] = [
@@ -13,50 +21,57 @@ export const technologies: Technology[] = [
     id: 'frontend',
     name: 'Frontend',
     icon: Layout,
-    description: 'Interfaces modernas y responsivas',
+    description: 'Interfaces modernas y de alto rendimiento',
     tools: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS'],
   },
   {
     id: 'backend',
-    name: 'Backend',
+    name: 'Backend & Base de Datos',
     icon: Server,
     description: 'APIs robustas y escalables',
-    tools: ['Node.js', 'Python', 'PostgreSQL', 'MongoDB'],
+    tools: ['Node.js', 'Supabase', 'PostgreSQL', 'REST/GraphQL'],
   },
   {
-    id: 'mobile',
-    name: 'Mobile',
-    icon: Smartphone,
-    description: 'Aplicaciones móviles nativas',
-    tools: ['React Native', 'Flutter', 'iOS', 'Android'],
+    id: 'auth',
+    name: 'Autenticación',
+    icon: Shield,
+    description: 'Seguridad de primer nivel',
+    tools: ['Clerk', 'NextAuth', 'JWT', 'OAuth'],
   },
   {
-    id: 'database',
-    name: 'Bases de Datos',
-    icon: Database,
-    description: 'Gestión eficiente de datos',
-    tools: ['PostgreSQL', 'MongoDB', 'Redis', 'Firebase'],
+    id: 'code-quality',
+    name: 'Calidad de Código',
+    icon: Code,
+    description: 'Mantenibilidad y claridad',
+    tools: ['Clean Code', 'ESLint', 'Prettier', 'TypeScript'],
   },
   {
-    id: 'design',
-    name: 'Diseño',
-    icon: Palette,
-    description: 'Experiencias visuales atractivas',
-    tools: ['Figma', 'Adobe XD', 'Photoshop', 'Illustrator'],
+    id: 'testing',
+    name: 'Testing',
+    icon: TestTube2,
+    description: 'Código confiable y mantenible',
+    tools: ['Jest', 'React Testing Library', 'Cypress', 'Vitest'],
   },
   {
-    id: 'devops',
-    name: 'DevOps',
-    icon: Cpu,
-    description: 'Despliegue y monitoreo',
-    tools: ['Docker', 'AWS', 'Vercel', 'GitHub Actions'],
+    id: 'architecture',
+    name: 'Arquitectura',
+    icon: Layers,
+    description: 'Estructura clara y escalable',
+    tools: ['Arquitectura Modular', 'Patrones de Diseño', 'SOLID', 'Principios DRY'],
   },
-];
+  {
+    id: 'version-control',
+    name: 'Control de Versiones',
+    icon: GitCommit,
+    description: 'Trabajo en equipo eficiente',
+    tools: ['Git', 'GitHub', 'Git Flow', 'Conventional Commits'],
+  },
+]
 
-export const getTechnologies = (): Technology[] => {
-  return technologies;
-};
+export function getTechnologies(): Technology[] {
+  return technologies
+}
 
-export const getTechnologyById = (id: string): Technology | undefined => {
-  return technologies.find(tech => tech.id === id);
-};
+export function getTechnologyById(id: string): Technology | undefined {
+  return technologies.find(tech => tech.id === id)
+}

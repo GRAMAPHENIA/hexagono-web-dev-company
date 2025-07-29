@@ -370,7 +370,7 @@ export default function HomePage() {
       <section className="py-20 bg-background relative">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-4 mb-12">
-            <div className="inline-flex items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 text-primary text-xs font-medium tracking-wider uppercase">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 text-xs font-medium tracking-wider text-primary-foreground bg-primary/90 rounded-full mb-6">
               <MessageCircle className="h-3.5 w-3.5" />
               <span>Testimonios</span>
             </div>
@@ -501,38 +501,94 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Tecnologías */}
-      <section className="py-16 bg-muted/30">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center space-y-3 mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold">Tecnologías que Utilizamos</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Herramientas modernas para resultados excepcionales
-            </p>
+      {/* Sección de Tecnologías - Versión Limpia */}
+      <section className="relative py-20 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/20 dark:to-muted/30 -z-10"></div>
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <div className="text-center mb-16">
+            <div className="inline-flex flex-col sm:flex-row items-center justify-center gap-6 px-8 py-6 bg-background/90 dark:bg-background/80 backdrop-blur-sm rounded-2xl border border-border/30 shadow-sm hover:shadow-md transition-all duration-300 max-w-2xl mx-auto">
+              <div
+                className={`p-3 rounded-xl ${
+                  technologies.length % 2 === 0
+                    ? 'bg-primary/10 text-primary'
+                    : 'bg-secondary/10 text-secondary'
+                }`}
+              >
+                <Code className="h-6 w-6" />
+              </div>
+              <div>
+                <p className="font-medium text-lg mb-1 text-foreground">Innovación Continua</p>
+                <p className="text-muted-foreground/90 dark:text-muted-foreground text-sm">
+                  Nuestro stack evoluciona constantemente para ofrecerte las soluciones más
+                  avanzadas del mercado.
+                </p>
+              </div>
+            </div>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
-            {technologies.map(tech => {
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {technologies.map((tech, index) => {
               const IconComponent = tech.icon
+              // Alternar la dirección del efecto para crear un patrón
+              const isEven = index % 2 === 0
               return (
                 <div
                   key={tech.id}
-                  className="flex flex-col items-center p-4 bg-card rounded-lg hover:shadow-md transition-shadow h-full group"
+                  className={`group relative p-0.5 rounded-2xl bg-gradient-to-br ${
+                    isEven
+                      ? 'from-primary/5 via-background to-background dark:from-primary/10 dark:via-background dark:to-muted/5'
+                      : 'from-secondary/5 via-background to-background dark:from-secondary/10 dark:via-background dark:to-primary/5'
+                  } hover:shadow-lg transition-all duration-300 border border-border/30 dark:border-border/20`}
                 >
-                  <div className="flex items-center justify-center h-14 w-14 mb-3 bg-primary/10 rounded-full group-hover:bg-primary/20 transition-colors">
-                    <IconComponent className="h-8 w-8 text-primary" />
+                  <div className="bg-background/80 dark:bg-background/95 rounded-2xl p-6 h-full">
+                    <div className="flex items-start gap-5">
+                      <div
+                        className={`flex-shrink-0 h-14 w-14 rounded-xl bg-primary/10 dark:bg-primary/20 flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300`}
+                      >
+                        <IconComponent className="h-6 w-6 text-primary" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-xl font-semibold mb-2 text-foreground">{tech.name}</h3>
+                        <p className="text-muted-foreground/90 dark:text-muted-foreground mb-4">
+                          {tech.description}
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          {tech.tools?.map((tool, i) => (
+                            <span
+                              key={i}
+                              className="inline-flex items-center px-3 py-1 text-xs font-medium rounded-full bg-muted text-muted-foreground hover:bg-muted/80 transition-colors"
+                            >
+                              {tool}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <h3 className="text-sm font-medium text-center mb-2">{tech.name}</h3>
-                  <p className="text-xs text-muted-foreground text-center">{tech.description}</p>
                 </div>
               )
             })}
           </div>
 
-          <div className="mt-12 text-center">
-            <div className="inline-flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full text-sm">
-              <Code className="h-4 w-4 text-primary" />
-              <span>Tecnologías modernas y actualizadas</span>
+          <div className="mt-20 text-center relative">
+            <div className="inline-flex flex-col sm:flex-row items-center justify-center gap-6 px-8 py-6 bg-background/90 dark:bg-background/80 backdrop-blur-sm rounded-2xl border border-border/30 shadow-sm hover:shadow-md transition-all duration-300 max-w-2xl mx-auto">
+              <div
+                className={`p-3 rounded-xl ${
+                  technologies.length % 2 === 0
+                    ? 'bg-primary/10 text-primary'
+                    : 'bg-secondary/10 text-secondary'
+                }`}
+              >
+                <Code className="h-6 w-6" />
+              </div>
+              <div>
+                <p className="font-medium text-lg mb-1 text-foreground">Innovación Continua</p>
+                <p className="text-muted-foreground/90 dark:text-muted-foreground text-sm">
+                  Nuestro stack evoluciona constantemente para ofrecerte las soluciones más
+                  avanzadas del mercado.
+                </p>
+              </div>
             </div>
           </div>
         </div>
