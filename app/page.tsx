@@ -163,7 +163,7 @@ export default function HomePage() {
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-4 mb-16">
-            <div className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-primary/5 text-primary text-sm font-medium mb-4">
+            <div className="inline-flex items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 text-primary text-sm font-medium border border-border mb-4">
               <Zap className="h-4 w-4" />
               <span>Nuestras soluciones</span>
             </div>
@@ -305,63 +305,57 @@ export default function HomePage() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-20">
+      <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-4 mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold">¿Por qué elegir Hexágono?</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Combinamos experiencia, tecnología y atención personalizada
+            <div className="inline-flex items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 text-primary text-sm font-medium border border-border mb-4">
+              <Star className="h-4 w-4" />
+              <span>Nuestra ventaja</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-bold">
+              ¿Por qué elegir
+              <span className="block text-primary">Hexágono?</span>
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Combinamos experiencia, tecnología y atención personalizada para ofrecerte las mejores
+              soluciones digitales.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <Card className="p-6 text-center hover:shadow-lg transition-shadow">
-              <CardContent className="p-0 space-y-4">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto">
-                  <Zap className="h-6 w-6 text-primary" />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                title: 'Entrega Rápida',
+                description: 'Proyectos completados en tiempo récord sin comprometer la calidad.',
+                icon: <Zap className="h-6 w-6 text-primary" />,
+              },
+              {
+                title: 'Soporte Real',
+                description: 'Atención personalizada y soporte técnico cuando lo necesites.',
+                icon: <Shield className="h-6 w-6 text-primary" />,
+              },
+              {
+                title: 'Precios Accesibles',
+                description: 'Calidad profesional a precios justos y transparentes.',
+                icon: <Users className="h-6 w-6 text-primary" />,
+              },
+              {
+                title: 'Diseño Moderno',
+                description: 'Sitios web actuales, responsivos y optimizados para conversión.',
+                icon: <Globe className="h-6 w-6 text-primary" />,
+              },
+            ].map((item, index) => (
+              <div
+                key={index}
+                className="group relative bg-background/80 dark:bg-background/95 rounded-2xl p-6 border border-border/30 hover:shadow-lg transition-all duration-300 h-full"
+              >
+                <div className="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-12 transition-transform">
+                  {item.icon}
                 </div>
-                <h3 className="text-lg font-semibold">Entrega Rápida</h3>
-                <p className="text-sm text-muted-foreground">
-                  Proyectos completados en tiempo récord sin comprometer la calidad.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="p-6 text-center hover:shadow-lg transition-shadow">
-              <CardContent className="p-0 space-y-4">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto">
-                  <Shield className="h-6 w-6 text-primary" />
-                </div>
-                <h3 className="text-lg font-semibold">Soporte Real</h3>
-                <p className="text-sm text-muted-foreground">
-                  Atención personalizada y soporte técnico cuando lo necesites.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="p-6 text-center hover:shadow-lg transition-shadow">
-              <CardContent className="p-0 space-y-4">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto">
-                  <Users className="h-6 w-6 text-primary" />
-                </div>
-                <h3 className="text-lg font-semibold">Precios Accesibles</h3>
-                <p className="text-sm text-muted-foreground">
-                  Calidad profesional a precios justos y transparentes.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="p-6 text-center hover:shadow-lg transition-shadow">
-              <CardContent className="p-0 space-y-4">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto">
-                  <Globe className="h-6 w-6 text-primary" />
-                </div>
-                <h3 className="text-lg font-semibold">Diseño Moderno</h3>
-                <p className="text-sm text-muted-foreground">
-                  Sitios web actuales, responsivos y optimizados para conversión.
-                </p>
-              </CardContent>
-            </Card>
+                <h3 className="text-lg font-semibold mb-2 text-foreground">{item.title}</h3>
+                <p className="text-sm text-muted-foreground">{item.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -370,8 +364,8 @@ export default function HomePage() {
       <section className="py-20 bg-background relative">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-4 mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 text-xs font-medium tracking-wider text-primary-foreground bg-primary/90 rounded-full mb-6">
-              <MessageCircle className="h-3.5 w-3.5" />
+            <div className="inline-flex items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 text-primary text-sm font-medium border border-border mb-8">
+              <MessageCircle className="h-4 w-4" />
               <span>Testimonios</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold">Lo que dicen nuestros clientes</h2>
