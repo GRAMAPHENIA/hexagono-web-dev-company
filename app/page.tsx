@@ -18,6 +18,9 @@ import {
   Monitor,
   BarChart,
   CheckCircle,
+  Rocket,
+  RefreshCw,
+  TrendingUp,
 } from 'lucide-react'
 import { webPlans, socialPlans, formatPrice } from '@/lib/pricing'
 import { getFeaturedTestimonials } from '@/lib/testimonials'
@@ -495,36 +498,24 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Sección de Tecnologías - Versión Limpia */}
-      <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/20 dark:to-muted/30 -z-10"></div>
-
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <div className="text-center mb-16">
-            <div className="inline-flex flex-col sm:flex-row items-center justify-center gap-6 px-8 py-6 bg-background/90 dark:bg-background/80 backdrop-blur-sm rounded-2xl border border-border/30 shadow-sm hover:shadow-md transition-all duration-300 max-w-2xl mx-auto">
-              <div
-                className={`p-3 rounded-xl ${
-                  technologies.length % 2 === 0
-                    ? 'bg-primary/10 text-primary'
-                    : 'bg-secondary/10 text-secondary'
-                }`}
-              >
-                <Code className="h-6 w-6" />
-              </div>
-              <div>
-                <p className="font-medium text-lg mb-1 text-foreground">Innovación Continua</p>
-                <p className="text-muted-foreground/90 dark:text-muted-foreground text-sm">
-                  Nuestro stack evoluciona constantemente para ofrecerte las soluciones más
-                  avanzadas del mercado.
-                </p>
-              </div>
+      {/* Technologies & Innovation */}
+      <section className="py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center space-y-4 mb-16">
+            <div className="inline-flex items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 text-primary text-sm font-medium border border-border mb-4">
+              <Code className="h-4 w-4" />
+              <span>Tecnologías que utilizamos</span>
             </div>
+            <h2 className="text-3xl sm:text-4xl font-bold">Nuestro Stack Tecnológico</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Utilizamos las mejores herramientas para ofrecerte soluciones de alta calidad y
+              avanzadas del mercado.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {technologies.map((tech, index) => {
               const IconComponent = tech.icon
-              // Alternar la dirección del efecto para crear un patrón
               const isEven = index % 2 === 0
               return (
                 <div
@@ -537,13 +528,11 @@ export default function HomePage() {
                 >
                   <div className="bg-background/80 dark:bg-background/95 rounded-2xl p-6 h-full">
                     <div className="flex items-start gap-5">
-                      <div
-                        className={`flex-shrink-0 h-14 w-14 rounded-xl bg-primary/10 dark:bg-primary/20 flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300`}
-                      >
+                      <div className="flex-shrink-0 h-14 w-14 rounded-xl bg-primary/10 dark:bg-primary/20 flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300">
                         <IconComponent className="h-6 w-6 text-primary" />
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-xl font-semibold mb-2 text-foreground">{tech.name}</h3>
+                        <h3 className="text-lg font-semibold mb-2 text-foreground">{tech.name}</h3>
                         <p className="text-muted-foreground/90 dark:text-muted-foreground mb-4">
                           {tech.description}
                         </p>
@@ -564,26 +553,71 @@ export default function HomePage() {
               )
             })}
           </div>
+        </div>
+      </section>
 
-          <div className="mt-20 text-center relative">
-            <div className="inline-flex flex-col sm:flex-row items-center justify-center gap-6 px-8 py-6 bg-background/90 dark:bg-background/80 backdrop-blur-sm rounded-2xl border border-border/30 shadow-sm hover:shadow-md transition-all duration-300 max-w-2xl mx-auto">
-              <div
-                className={`p-3 rounded-xl ${
-                  technologies.length % 2 === 0
-                    ? 'bg-primary/10 text-primary'
-                    : 'bg-secondary/10 text-secondary'
-                }`}
-              >
-                <Code className="h-6 w-6" />
-              </div>
-              <div>
-                <p className="font-medium text-lg mb-1 text-foreground">Innovación Continua</p>
-                <p className="text-muted-foreground/90 dark:text-muted-foreground text-sm">
-                  Nuestro stack evoluciona constantemente para ofrecerte las soluciones más
-                  avanzadas del mercado.
-                </p>
-              </div>
+      {/* Continuous Innovation */}
+      <section className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center space-y-4 mb-16">
+            <div className="inline-flex items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 text-primary text-sm font-medium border border-border mb-4">
+              <Rocket className="h-4 w-4" />
+              <span>Innovación continua</span>
             </div>
+            <h2 className="text-3xl sm:text-4xl font-bold">Innovación Continua</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Nuestro stack evoluciona constantemente para ofrecerte las soluciones más avanzadas
+              del mercado
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                title: 'Actualizaciones Constantes',
+                description:
+                  'Mantenemos nuestras herramientas y tecnologías siempre actualizadas para ofrecerte lo último en desarrollo web.',
+                icon: <RefreshCw className="h-6 w-6 text-primary" />,
+              },
+              {
+                title: 'Rendimiento Óptimo',
+                description:
+                  'Implementamos las últimas técnicas de optimización para garantizar el máximo rendimiento de tus proyectos.',
+                icon: <Zap className="h-6 w-6 text-primary" />,
+              },
+              {
+                title: 'Seguridad Avanzada',
+                description:
+                  'Aplicamos los estándares más altos de seguridad para proteger tus datos y los de tus clientes.',
+                icon: <Shield className="h-6 w-6 text-primary" />,
+              },
+              {
+                title: 'Escalabilidad',
+                description:
+                  'Diseñamos soluciones que crecen contigo, asegurando que tu negocio pueda expandirse sin límites.',
+                icon: <TrendingUp className="h-6 w-6 text-primary" />,
+              },
+            ].map((item, index) => (
+              <div
+                key={index}
+                className="bg-background rounded-xl p-6 border border-border/30 hover:shadow-md transition-all duration-300 h-full"
+              >
+                <div className="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-4">
+                  {item.icon}
+                </div>
+                <h3 className="text-lg font-semibold mb-2 text-foreground">{item.title}</h3>
+                <p className="text-muted-foreground text-sm">{item.description}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-16 text-center">
+            <Button size="lg" asChild>
+              <Link href="/contact" className="group">
+                Conoce más sobre nuestra metodología
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </Link>
+            </Button>
           </div>
         </div>
       </section>

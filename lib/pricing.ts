@@ -1,24 +1,24 @@
 export interface PlanFeature {
-  text: string;
-  included: boolean;
+  text: string
+  included: boolean
 }
 
 export interface Plan {
-  id: string;
-  title: string;
-  price: number;
-  currency: string;
-  popular?: boolean;
-  features: string[];
-  category: 'web' | 'social';
-  description?: string;
+  id: string
+  title: string
+  price: number
+  currency: string
+  popular?: boolean
+  features: string[]
+  category: 'web' | 'social'
+  description?: string
 }
 
 export const webPlans: Plan[] = [
   {
     id: 'landing-page',
     title: 'Landing Page',
-    price: 170000,
+    price: 190000,
     currency: 'ARS',
     category: 'web',
     description: 'Página única optimizada para conversión',
@@ -34,7 +34,7 @@ export const webPlans: Plan[] = [
   {
     id: 'web-corporativa',
     title: 'Web Corporativa',
-    price: 250000,
+    price: 275000,
     currency: 'ARS',
     category: 'web',
     popular: true,
@@ -51,7 +51,7 @@ export const webPlans: Plan[] = [
   {
     id: 'tienda-online',
     title: 'Tienda Online',
-    price: 370000,
+    price: 410000,
     currency: 'ARS',
     category: 'web',
     description: 'E-commerce completo con gestión de productos',
@@ -64,13 +64,13 @@ export const webPlans: Plan[] = [
       'Gestión de inventario',
     ],
   },
-];
+]
 
 export const socialPlans: Plan[] = [
   {
     id: 'plan-inicial',
     title: 'Plan Inicial',
-    price: 85000,
+    price: 95000,
     currency: 'ARS',
     category: 'social',
     description: 'Perfecto para empezar en redes sociales',
@@ -86,7 +86,7 @@ export const socialPlans: Plan[] = [
   {
     id: 'plan-activo',
     title: 'Plan Activo',
-    price: 180000,
+    price: 200000,
     currency: 'ARS',
     category: 'social',
     popular: true,
@@ -103,20 +103,20 @@ export const socialPlans: Plan[] = [
   {
     id: 'plan-premium',
     title: 'Plan Premium',
-    price: 310000,
+    price: 340000,
     currency: 'ARS',
     category: 'social',
-    description: 'Estrategia completa de marketing digital',
+    description: 'Solución completa para gestión de redes',
     features: [
-      'Estrategia de crecimiento',
-      'Posts ilimitados',
-      'Todas las redes sociales',
+      '20 posts al mes',
+      'Diseño premium personalizado',
+      'Estrategia de contenidos',
+      '3+ redes sociales',
       'Campañas publicitarias',
-      'Atención personalizada',
-      'Reportes detallados',
+      'Reporte detallado',
     ],
   },
-];
+]
 
 export const formatPrice = (price: number, currency: string = 'ARS'): string => {
   return new Intl.NumberFormat('es-AR', {
@@ -124,15 +124,15 @@ export const formatPrice = (price: number, currency: string = 'ARS'): string => 
     currency: currency === 'ARS' ? 'ARS' : 'USD',
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
-  }).format(price);
-};
+  }).format(price)
+}
 
-export const getAllPlans = (): Plan[] => [...webPlans, ...socialPlans];
+export const getAllPlans = (): Plan[] => [...webPlans, ...socialPlans]
 
 export const getPlansByCategory = (category: 'web' | 'social'): Plan[] => {
-  return category === 'web' ? webPlans : socialPlans;
-};
+  return category === 'web' ? webPlans : socialPlans
+}
 
 export const getPlanById = (id: string): Plan | undefined => {
-  return getAllPlans().find(plan => plan.id === id);
-};
+  return getAllPlans().find(plan => plan.id === id)
+}

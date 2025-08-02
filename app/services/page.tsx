@@ -1,9 +1,9 @@
-import { PlanCard } from "@/components/ui/plan-card"
-import { QuoteBox } from "@/components/ui/quote-box"
-import { CTAButton } from "@/components/ui/cta-button"
-import { Badge } from "@/components/ui/badge"
-import { Card, CardContent } from "@/components/ui/card"
-import { Globe, Instagram } from "lucide-react"
+import { PlanCard } from '@/components/ui/plan-card'
+import { QuoteBox } from '@/components/ui/quote-box'
+import { CTAButton } from '@/components/ui/cta-button'
+import { Badge } from '@/components/ui/badge'
+import { Card, CardContent } from '@/components/ui/card'
+import { Globe, Instagram } from 'lucide-react'
 
 export default function ServicesPage() {
   return (
@@ -19,8 +19,8 @@ export default function ServicesPage() {
               Soluciones digitales <span className="text-primary">completas</span>
             </h1>
             <p className="text-xl text-muted-foreground">
-              Desde sitios web profesionales hasta gestión estratégica de redes sociales. Todo lo que necesitas para
-              destacar en el mundo digital.
+              Desde sitios web profesionales hasta gestión estratégica de redes sociales. Todo lo
+              que necesitas para destacar en el mundo digital.
             </p>
           </div>
         </div>
@@ -42,45 +42,45 @@ export default function ServicesPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             <PlanCard
               title="Landing Page"
-              price="$170.000"
+              price="$190.000"
               features={[
-                "Enfocada en conversión",
-                "Página única optimizada",
-                "Adaptación a todos los dispositivos",
-                "Formularios de contacto integrados",
-                "Conexión con redes sociales",
-                "Galería de imágenes",
-                "Optimización SEO básica",
-                "Tiempo de entrega: 7-10 días",
+                'Enfocada en conversión',
+                'Página única optimizada',
+                'Adaptación a todos los dispositivos',
+                'Formularios de contacto integrados',
+                'Conexión con redes sociales',
+                'Galería de imágenes',
+                'Optimización SEO básica',
+                'Tiempo de entrega: 7-10 días',
               ]}
             />
             <PlanCard
               title="Web Corporativa"
-              price="$250.000"
+              price="$275.000"
               popular={true}
               features={[
-                "Hasta 5 secciones completas",
-                "Diseño de identidad de marca",
-                "Configuración hosting externo",
-                "Diseño 100% responsivo",
-                "Formulario de contacto avanzado",
-                "Optimización SEO completa",
-                "Panel de administración",
-                "Tiempo de entrega: 14-21 días",
+                'Hasta 5 secciones completas',
+                'Diseño de identidad de marca',
+                'Configuración hosting externo',
+                'Diseño 100% responsivo',
+                'Formulario de contacto avanzado',
+                'Optimización SEO completa',
+                'Panel de administración',
+                'Tiempo de entrega: 14-21 días',
               ]}
             />
             <PlanCard
               title="Tienda Online"
-              price="$370.000"
+              price="$410.000"
               features={[
-                "Carrito de compras completo",
-                "Medios de pago integrados",
-                "Sistema de carga de productos",
-                "Hosting incluido (1 año)",
-                "Panel administrativo avanzado",
-                "Gestión de inventario",
-                "Sistema de envíos",
-                "Tiempo de entrega: 21-30 días",
+                'Carrito de compras completo',
+                'Medios de pago integrados',
+                'Sistema de carga de productos',
+                'Hosting incluido (1 año)',
+                'Panel administrativo avanzado',
+                'Gestión de inventario',
+                'Sistema de envíos',
+                'Tiempo de entrega: 21-30 días',
               ]}
             />
           </div>
@@ -88,13 +88,16 @@ export default function ServicesPage() {
           <QuoteBox title="Detalles Importantes - Sitios Web">
             <ul className="space-y-2 text-sm">
               <li>
-                • <strong>Hosting y dominio:</strong> No incluidos por defecto (excepto Tienda Online)
+                • <strong>Hosting y dominio:</strong> No incluidos por defecto (excepto Tienda
+                Online)
               </li>
               <li>
-                • <strong>Mantenimiento:</strong> Disponible como servicio opcional desde $25.000/mes
+                • <strong>Mantenimiento:</strong> Disponible como servicio opcional desde
+                $25.000/mes
               </li>
               <li>
-                • <strong>Personalización:</strong> Todos los planes son adaptables a necesidades específicas
+                • <strong>Personalización:</strong> Todos los planes son adaptables a necesidades
+                específicas
               </li>
               <li>
                 • <strong>Garantía:</strong> 30 días de soporte técnico gratuito post-entrega
@@ -120,45 +123,45 @@ export default function ServicesPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             <PlanCard
               title="Plan Inicial"
-              price="$85.000"
+              price="$95.000"
               features={[
-                "2 posts profesionales al mes",
-                "Historias semanales",
-                "Reducción y optimización de copias",
-                "Diseño gráfico básico",
-                "Gestión de 1 red social",
-                "Reporte mensual de métricas",
-                "Respuesta a comentarios",
-                "Hashtags estratégicos",
+                '2 posts profesionales al mes',
+                'Historias semanales',
+                'Reducción y optimización de copias',
+                'Diseño gráfico básico',
+                'Gestión de 1 red social',
+                'Reporte mensual de métricas',
+                'Respuesta a comentarios',
+                'Hashtags estratégicos',
               ]}
             />
             <PlanCard
               title="Plan Activo"
-              price="$180.000"
+              price="$200.000"
               popular={true}
               features={[
-                "10 posts profesionales al mes",
-                "Diseño gráfico profesional",
-                "Email marketing mensual",
-                "Gestión de 2 redes sociales",
-                "Historias diarias",
-                "Análisis detallado de métricas",
-                "Estrategia de contenido",
-                "Atención a mensajes directos",
+                '10 posts profesionales al mes',
+                'Diseño gráfico profesional',
+                'Email marketing mensual',
+                'Gestión de 2 redes sociales',
+                'Historias diarias',
+                'Análisis detallado de métricas',
+                'Estrategia de contenido',
+                'Atención a mensajes directos',
               ]}
             />
             <PlanCard
               title="Plan Premium"
-              price="$310.000"
+              price="$340.000"
               features={[
-                "Estrategia completa de crecimiento",
-                "Posts ilimitados",
-                "Gestión de todas las redes sociales",
-                "Campañas publicitarias incluidas",
-                "Atención personalizada dedicada",
-                "Reportes detallados semanales",
-                "Influencer marketing",
-                "Consultoría estratégica mensual",
+                'Estrategia completa de crecimiento',
+                'Posts ilimitados',
+                'Gestión de todas las redes sociales',
+                'Campañas publicitarias incluidas',
+                'Atención personalizada dedicada',
+                'Reportes detallados semanales',
+                'Influencer marketing',
+                'Consultoría estratégica mensual',
               ]}
             />
           </div>
@@ -202,15 +205,15 @@ export default function ServicesPage() {
                 <div className="space-y-4">
                   <div className="flex justify-between items-center py-2 border-b">
                     <span className="font-medium">Landing Page</span>
-                    <span className="text-primary font-bold">$170.000</span>
+                    <span className="text-primary font-bold">$190.000</span>
                   </div>
                   <div className="flex justify-between items-center py-2 border-b">
                     <span className="font-medium">Web Corporativa</span>
-                    <span className="text-primary font-bold">$250.000</span>
+                    <span className="text-primary font-bold">$275.000</span>
                   </div>
                   <div className="flex justify-between items-center py-2 border-b">
                     <span className="font-medium">Tienda Online</span>
-                    <span className="text-primary font-bold">$370.000</span>
+                    <span className="text-primary font-bold">$410.000</span>
                   </div>
                 </div>
                 <p className="text-sm text-muted-foreground">
@@ -228,15 +231,15 @@ export default function ServicesPage() {
                 <div className="space-y-4">
                   <div className="flex justify-between items-center py-2 border-b">
                     <span className="font-medium">Plan Inicial</span>
-                    <span className="text-primary font-bold">$85.000</span>
+                    <span className="text-primary font-bold">$95.000</span>
                   </div>
                   <div className="flex justify-between items-center py-2 border-b">
                     <span className="font-medium">Plan Activo</span>
-                    <span className="text-primary font-bold">$180.000</span>
+                    <span className="text-primary font-bold">$200.000</span>
                   </div>
                   <div className="flex justify-between items-center py-2 border-b">
                     <span className="font-medium">Plan Premium</span>
-                    <span className="text-primary font-bold">$310.000</span>
+                    <span className="text-primary font-bold">$340.000</span>
                   </div>
                 </div>
                 <p className="text-sm text-muted-foreground">
@@ -254,8 +257,8 @@ export default function ServicesPage() {
           <div className="max-w-3xl mx-auto text-center space-y-8">
             <h2 className="text-3xl sm:text-4xl font-bold">¿Necesitas algo personalizado?</h2>
             <p className="text-xl opacity-90">
-              Todos nuestros servicios son adaptables. Conversemos sobre tu proyecto específico y creemos una solución a
-              medida.
+              Todos nuestros servicios son adaptables. Conversemos sobre tu proyecto específico y
+              creemos una solución a medida.
             </p>
             <CTAButton href="/contact">Solicitar Cotización Personalizada</CTAButton>
           </div>
