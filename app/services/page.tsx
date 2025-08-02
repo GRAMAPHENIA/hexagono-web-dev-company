@@ -3,39 +3,43 @@ import { QuoteBox } from '@/components/ui/quote-box'
 import { CTAButton } from '@/components/ui/cta-button'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent } from '@/components/ui/card'
-import { Globe, Instagram } from 'lucide-react'
+import { Globe, Instagram, Zap, Sparkles, Monitor, MessageCircle } from 'lucide-react'
 
 export default function ServicesPage() {
   return (
     <div className="space-y-20">
-      {/* Hero Section */}
-      <section className="py-20 lg:py-32">
+      {/* Hero Section - Estilo similar al home */}
+      <section className="relative py-16 md:py-20 overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center space-y-8">
-            <Badge variant="secondary" className="text-sm">
-              Nuestros Servicios
-            </Badge>
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight">
-              Soluciones digitales <span className="text-primary">completas</span>
+          <div className="relative z-10 max-w-3xl">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 text-primary text-sm font-medium border border-border mb-8">
+              <Sparkles className="h-4 w-4" />
+              <span>Innovación Digital</span>
+            </div>
+
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
+              Nuestros <span className="text-primary">Servicios</span>
             </h1>
-            <p className="text-xl text-muted-foreground">
-              Desde sitios web profesionales hasta gestión estratégica de redes sociales. Todo lo
-              que necesitas para destacar en el mundo digital.
+
+            <p className="text-lg text-muted-foreground max-w-2xl mb-8">
+              Soluciones digitales personalizadas que impulsan el crecimiento de tu negocio en la
+              era digital.
             </p>
           </div>
         </div>
       </section>
 
       {/* Web Development Services */}
-      <section className="py-20">
+      <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-4 mb-16">
-            <div className="flex items-center justify-center space-x-2 mb-4">
-              <Globe className="h-8 w-8 text-primary" />
-              <h2 className="text-3xl sm:text-4xl font-bold">Desarrollo de Sitios Web</h2>
+            <div className="inline-flex items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 text-primary text-sm font-medium border border-border mb-4">
+              <Monitor className="h-4 w-4" />
+              <span>Desarrollo Web</span>
             </div>
+            <h2 className="text-3xl sm:text-4xl font-bold">Sitios Web Profesionales</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Sitios web modernos, responsivos y optimizados para conversión
+              Soluciones web a medida que se adaptan a tus necesidades
             </p>
           </div>
 
@@ -108,15 +112,16 @@ export default function ServicesPage() {
       </section>
 
       {/* Social Media Management */}
-      <section className="py-20 bg-muted/30">
+      <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-4 mb-16">
-            <div className="flex items-center justify-center space-x-2 mb-4">
-              <Instagram className="h-8 w-8 text-primary" />
-              <h2 className="text-3xl sm:text-4xl font-bold">Gestión de Redes Sociales</h2>
+            <div className="inline-flex items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 text-primary text-sm font-medium border border-border mb-4">
+              <MessageCircle className="h-4 w-4" />
+              <span>Redes Sociales</span>
             </div>
+            <h2 className="text-3xl sm:text-4xl font-bold">Gestión de Redes Sociales</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Estrategias personalizadas para hacer crecer tu presencia en redes sociales
+              Estrategias personalizadas para hacer crecer tu presencia en redes
             </p>
           </div>
 
@@ -185,82 +190,22 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Service Comparison */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center space-y-4 mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold">Comparación de Servicios</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Encuentra el plan perfecto para tu negocio
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <Card className="p-8">
-              <CardContent className="p-0 space-y-6">
-                <div className="flex items-center space-x-3">
-                  <Globe className="h-8 w-8 text-primary" />
-                  <h3 className="text-2xl font-bold">Sitios Web</h3>
-                </div>
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center py-2 border-b">
-                    <span className="font-medium">Landing Page</span>
-                    <span className="text-primary font-bold">$190.000</span>
-                  </div>
-                  <div className="flex justify-between items-center py-2 border-b">
-                    <span className="font-medium">Web Corporativa</span>
-                    <span className="text-primary font-bold">$275.000</span>
-                  </div>
-                  <div className="flex justify-between items-center py-2 border-b">
-                    <span className="font-medium">Tienda Online</span>
-                    <span className="text-primary font-bold">$410.000</span>
-                  </div>
-                </div>
-                <p className="text-sm text-muted-foreground">
-                  Todos incluyen diseño responsivo, optimización SEO y soporte post-entrega.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="p-8">
-              <CardContent className="p-0 space-y-6">
-                <div className="flex items-center space-x-3">
-                  <Instagram className="h-8 w-8 text-primary" />
-                  <h3 className="text-2xl font-bold">Redes Sociales</h3>
-                </div>
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center py-2 border-b">
-                    <span className="font-medium">Plan Inicial</span>
-                    <span className="text-primary font-bold">$95.000</span>
-                  </div>
-                  <div className="flex justify-between items-center py-2 border-b">
-                    <span className="font-medium">Plan Activo</span>
-                    <span className="text-primary font-bold">$200.000</span>
-                  </div>
-                  <div className="flex justify-between items-center py-2 border-b">
-                    <span className="font-medium">Plan Premium</span>
-                    <span className="text-primary font-bold">$340.000</span>
-                  </div>
-                </div>
-                <p className="text-sm text-muted-foreground">
-                  Precios mensuales. Incluyen diseño, contenido y gestión completa.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
       {/* CTA Section */}
-      <section className="py-20 bg-primary text-primary-foreground">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center space-y-8">
-            <h2 className="text-3xl sm:text-4xl font-bold">¿Necesitas algo personalizado?</h2>
-            <p className="text-xl opacity-90">
-              Todos nuestros servicios son adaptables. Conversemos sobre tu proyecto específico y
-              creemos una solución a medida.
+      <section className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="max-w-3xl mx-auto space-y-8">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 text-primary text-sm font-medium border border-border">
+              <Zap className="h-4 w-4" />
+              <span>¿Listo para comenzar?</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-bold">Transforma tu presencia digital hoy</h2>
+            <p className="text-xl text-muted-foreground">
+              Contáctanos para una consulta gratuita y descubre cómo podemos ayudarte a alcanzar tus
+              objetivos.
             </p>
-            <CTAButton href="/contact">Solicitar Cotización Personalizada</CTAButton>
+            <div className="pt-4">
+              <CTAButton href="/contact">Solicitar Cotización</CTAButton>
+            </div>
           </div>
         </div>
       </section>
