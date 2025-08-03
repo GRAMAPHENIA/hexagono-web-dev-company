@@ -200,7 +200,7 @@ export default function HomePage() {
                       <ul className="space-y-2 mb-6">
                         {plan.features.map((feature, i) => (
                           <li key={i} className="flex items-center gap-2">
-                            <CheckCircle className="h-4 w-4 text-green-500" />
+                            <CheckCircle className="h-4 w-4 text-zinc-500 dark:text-blue-500" />
                             <span>{feature}</span>
                           </li>
                         ))}
@@ -235,7 +235,7 @@ export default function HomePage() {
                       <ul className="space-y-2 mb-6">
                         {plan.features.map((feature, i) => (
                           <li key={i} className="flex items-center gap-2">
-                            <CheckCircle className="h-4 w-4 text-green-500" />
+                            <CheckCircle className="h-4 w-4 text-blue-500" />
                             <span>{feature}</span>
                           </li>
                         ))}
@@ -285,21 +285,21 @@ export default function HomePage() {
             <div className="text-lg font-semibold mb-2">Información importante</div>
             <ul className="space-y-2 text-sm">
               <li className="flex items-start gap-2">
-                <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
                 <span>Hosting y dominio no incluidos por defecto (excepto en Tienda Online)</span>
               </li>
               <li className="flex items-start gap-2">
-                <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
                 <span>
                   Los planes no incluyen mantenimiento continuo (disponible como servicio opcional)
                 </span>
               </li>
               <li className="flex items-start gap-2">
-                <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
                 <span>Todos los servicios son adaptables a necesidades personalizadas</span>
               </li>
               <li className="flex items-start gap-2">
-                <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
                 <span>Precios en pesos argentinos, sujetos a modificación</span>
               </li>
             </ul>
@@ -420,7 +420,7 @@ export default function HomePage() {
                                 key={i}
                                 className={`h-3.5 w-3.5 ${
                                   i < testimonial.rating
-                                    ? 'fill-yellow-400 text-yellow-400'
+                                    ? 'fill-amber-400 text-amber-400'
                                     : 'text-gray-200'
                                 }`}
                               />
