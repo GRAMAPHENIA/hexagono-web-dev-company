@@ -1,0 +1,123 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Quote {
+  id            String   @id @default(cuid())
+  quoteNumber   String   @unique @map("quote_number")
+  clientName    String   @map("client_name")
+  clientEmail   String   @map("client_email")
+  clientPhone   String?  @map("client_phone")
+  clientCompany String?  @map("client_company")
+
+  serviceType   ServiceType @map("service_type")
+  description   String?
+  timeline      String?
+  budgetRange   String?   @map("budget_range")
+
+  estimatedPrice Decimal? @map("estimated_price")
+  status        QuoteStatus @default(PENDING)
+  priority      Priority    @default(MEDIUM)
+  assignedTo    String?     @map("assigned_to")
+  accessToken   String      @unique @map("access_token")
+
+  features      QuoteFeature[]
+  attachments   QuoteAttachment[]
+  notes         QuoteNote[]
+  statusHistory QuoteStatusHistory[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("quotes")
+}
+
+model QuoteFeature {
+  id          String  @id @default(cuid())
+  quoteId     String  @map("quote_id")
+  featureName String  @map("feature_name")
+  featureCost Decimal @map("feature_cost")
+
+  quote Quote @relation(fields: [quoteId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("quote_features")
+}
+
+model QuoteAttachment {
+  id           String @id @default(cuid())
+  quoteId      String @map("quote_id")
+  filename     String
+  originalName String @map("original_name")
+  fileSize     Int    @map("file_size")
+  mimeType     String @map("mime_type")
+  storageUrl   String @map("storage_url")
+
+  quote Quote @relation(fields: [quoteId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("quote_attachments")
+}
+
+model QuoteNote {
+  id         String  @id @default(cuid())
+  quoteId    String  @map("quote_id")
+  author     String
+  note       String
+  isInternal Boolean @default(true) @map("is_internal")
+
+  quote Quote @relation(fields: [quoteId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("quote_notes")
+}
+
+model QuoteStatusHistory {
+  id             String  @id @default(cuid())
+  quoteId        String  @map("quote_id")
+  previousStatus String? @map("previous_status")
+  newStatus      String  @map("new_status")
+  changedBy      String  @map("changed_by")
+  notes          String?
+
+  quote Quote @relation(fields: [quoteId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("quote_status_history")
+}
+
+enum ServiceType {
+  LANDING_PAGE
+  CORPORATE_WEB
+  ECOMMERCE
+  SOCIAL_MEDIA
+}
+
+enum QuoteStatus {
+  PENDING
+  IN_REVIEW
+  QUOTED
+  COMPLETED
+  CANCELLED
+}
+
+enum Priority {
+  LOW
+  MEDIUM
+  HIGH
+}

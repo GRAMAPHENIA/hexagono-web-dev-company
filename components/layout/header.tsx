@@ -20,6 +20,7 @@ export const navigation: NavItem[] = [
   { name: 'Inicio', href: '/' },
   { name: 'Servicios', href: '/services' },
   { name: 'Proyectos', href: '/projects' },
+  { name: 'Cotizaciones', href: '/cotizacion' },
   { name: 'Sobre Nosotros', href: '/about' },
 ]
 

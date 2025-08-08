@@ -6,6 +6,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { Analytics } from '@/components/analytics';
+import { Toaster } from '@/components/ui/sonner';
 import { siteConfig } from '@/lib/site-config';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -80,6 +81,7 @@ export default function RootLayout({
             <Footer />
           </div>
         </ThemeProvider>
+        <Toaster />
         <Analytics />
       </body>
     </html>
