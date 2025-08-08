@@ -5,6 +5,41 @@ import { QuoteFormData } from '@/lib/types/quote'
 import { handleApiError, createSuccessResponse, validateApiInput, logError } from '@/lib/utils/api-errors'
 
 /**
+ * GET /api/quotes - Get all quotes
+ */
+export async function GET(request: NextRequest) {
+  try {
+    const { searchParams } = new URL(request.url)
+    const page = parseInt(searchParams.get('page') || '1')
+    const limit = parseInt(searchParams.get('limit') || '50')
+    const status = searchParams.get('status')
+    const search = searchParams.get('search')
+
+    // Build filters for findMany
+    const filters: any = {
+      page,
+      limit,
+    }
+
+    if (status && status !== 'ALL') {
+      filters.status = status
+    }
+
+    // Get quotes with optional filtering
+    const result = await quoteOperations.findMany(filters)
+
+    return createSuccessResponse({
+      data: result.quotes,
+      pagination: result.pagination
+    }, 'Cotizaciones obtenidas exitosamente')
+
+  } catch (error) {
+    logError(error, 'quotes_fetch_failed')
+    return handleApiError(error)
+  }
+}
+
+/**
  * POST /api/quotes - Create a new quote
  */
 export async function POST(request: NextRequest) {

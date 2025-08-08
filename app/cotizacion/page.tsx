@@ -1,6 +1,5 @@
 import { Metadata } from 'next'
 import { QuoteFormWrapper } from '@/components/forms/QuoteFormWrapper'
-import { QuoteFormData } from '@/lib/types/quote'
 
 export const metadata: Metadata = {
   title: 'Solicitar Cotización - Hexágono Web',
@@ -11,31 +10,6 @@ export const metadata: Metadata = {
     description: 'Solicita una cotización personalizada para tu proyecto web.',
     type: 'website',
   },
-}
-
-async function submitQuote(data: QuoteFormData): Promise<void> {
-  'use server'
-  
-  try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/quotes`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-
-    if (!response.ok) {
-      const errorData = await response.json()
-      throw new Error(errorData.error || 'Error al enviar la cotización')
-    }
-
-    const result = await response.json()
-    console.log('Cotización enviada:', result)
-  } catch (error) {
-    console.error('Error enviando cotización:', error)
-    throw error
-  }
 }
 
 export default function CotizacionPage() {
@@ -54,7 +28,7 @@ export default function CotizacionPage() {
         </div>
 
         {/* Formulario */}
-        <QuoteFormWrapper onSubmit={submitQuote} />
+        <QuoteFormWrapper />
         
         {/* Información adicional */}
         <div className="mt-16 max-w-4xl mx-auto">

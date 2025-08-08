@@ -112,6 +112,14 @@ export function Header() {
             <Button
               variant="ghost"
               size="sm"
+              asChild
+              className="hidden rounded-md border border-border/30 bg-background/30 px-4 text-sm font-medium text-foreground/90 hover:bg-accent/20 hover:text-foreground md:flex"
+            >
+              <Link href="/admin">Admin</Link>
+            </Button>
+            <Button
+              variant="ghost"
+              size="sm"
               className="hidden rounded-md border border-border/30 bg-background/30 px-4 text-sm font-medium text-foreground/90 hover:bg-accent/20 hover:text-foreground md:flex"
             >
               Contacto
