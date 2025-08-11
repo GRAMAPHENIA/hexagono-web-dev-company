@@ -19,6 +19,7 @@ export const clientInfoSchema = z.object({
     .max(255, 'El email no puede exceder 255 caracteres'),
   phone: z.string()
     .regex(/^[\+]?[0-9\s\-\(\)]{8,20}$/, 'Ingrese un teléfono válido')
+    .or(z.literal(''))
     .optional(),
   company: z.string()
     .max(255, 'El nombre de la empresa no puede exceder 255 caracteres')

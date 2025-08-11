@@ -26,7 +26,6 @@ Este plan de implementación convierte el diseño del Sistema de Cotizaciones On
 
 - [x] 3. Desarrollar API endpoints fundamentales
 
-
   - Crear POST /api/quotes para creación de cotizaciones
   - Implementar GET /api/quotes/[id] para obtener cotización específica
   - Crear POST /api/pricing/calculate para cálculo de precios en tiempo real
@@ -34,7 +33,7 @@ Este plan de implementación convierte el diseño del Sistema de Cotizaciones On
   - Escribir tests de integración para todos los endpoints
   - _Requirements: 1.1, 1.4, 2.1, 2.2_
 
-- [-] 4. Construir componente de formulario de cotización
+- [x] 4. Construir componente de formulario de cotización
 
 
   - Crear QuoteRequestForm con React Hook Form

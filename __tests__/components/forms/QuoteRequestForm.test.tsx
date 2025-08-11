@@ -37,14 +37,14 @@ describe('QuoteRequestForm', () => {
     render(<QuoteRequestForm onSubmit={mockOnSubmit} />)
 
     // Seleccionar tipo de servicio
-    const serviceSelect = screen.getByLabelText(/tipo de servicio/i)
+    const serviceSelect = screen.getByRole('combobox', { name: /tipo de servicio/i })
     fireEvent.click(serviceSelect)
 
     // Verificar que aparecen las opciones
     await waitFor(() => {
-      expect(screen.getByText(/landing page/i)).toBeInTheDocument()
-      expect(screen.getByText(/web corporativa/i)).toBeInTheDocument()
-      expect(screen.getByText(/tienda online/i)).toBeInTheDocument()
+      expect(screen.getByRole('option', { name: /landing page/i })).toBeInTheDocument()
+      expect(screen.getByRole('option', { name: /web corporativa/i })).toBeInTheDocument()
+      expect(screen.getByRole('option', { name: /tienda online/i })).toBeInTheDocument()
     })
   })
 
@@ -52,11 +52,12 @@ describe('QuoteRequestForm', () => {
     render(<QuoteRequestForm onSubmit={mockOnSubmit} />)
 
     // Seleccionar Landing Page
-    const serviceSelect = screen.getByLabelText(/tipo de servicio/i)
+    const serviceSelect = screen.getByRole('combobox', { name: /tipo de servicio/i })
     fireEvent.click(serviceSelect)
     
     await waitFor(() => {
-      fireEvent.click(screen.getByText(/landing page/i))
+      const landingPageOption = screen.getByRole('option', { name: /landing page/i })
+      fireEvent.click(landingPageOption)
     })
 
     // Verificar que aparecen las características
@@ -70,16 +71,17 @@ describe('QuoteRequestForm', () => {
     render(<QuoteRequestForm onSubmit={mockOnSubmit} />)
 
     // Seleccionar servicio
-    const serviceSelect = screen.getByLabelText(/tipo de servicio/i)
+    const serviceSelect = screen.getByRole('combobox', { name: /tipo de servicio/i })
     fireEvent.click(serviceSelect)
     
     await waitFor(() => {
-      fireEvent.click(screen.getByText(/landing page/i))
+      const landingPageOption = screen.getByRole('option', { name: /landing page/i })
+      fireEvent.click(landingPageOption)
     })
 
     // Seleccionar una característica
     await waitFor(() => {
-      const seoCheckbox = screen.getByLabelText(/optimización seo/i)
+      const seoCheckbox = screen.getByRole('checkbox', { name: /optimización seo/i })
       fireEvent.click(seoCheckbox)
     })
 
@@ -101,21 +103,22 @@ describe('QuoteRequestForm', () => {
     })
 
     // Seleccionar servicio
-    const serviceSelect = screen.getByLabelText(/tipo de servicio/i)
+    const serviceSelect = screen.getByRole('combobox', { name: /tipo de servicio/i })
     fireEvent.click(serviceSelect)
     
     await waitFor(() => {
-      fireEvent.click(screen.getByText(/landing page/i))
+      const landingPageOption = screen.getByRole('option', { name: /landing page/i })
+      fireEvent.click(landingPageOption)
     })
 
     // Seleccionar característica
     await waitFor(() => {
-      const seoCheckbox = screen.getByLabelText(/optimización seo/i)
+      const seoCheckbox = screen.getByRole('checkbox', { name: /optimización seo/i })
       fireEvent.click(seoCheckbox)
     })
 
     // Enviar formulario
-    const submitButton = screen.getByText(/enviar cotización/i)
+    const submitButton = screen.getByRole('button', { name: /enviar cotización/i })
     fireEvent.click(submitButton)
 
     await waitFor(() => {

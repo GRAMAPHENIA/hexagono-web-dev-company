@@ -59,3 +59,27 @@ global.ResizeObserver = class ResizeObserver {
   observe() {}
   unobserve() {}
 }
+
+// Mock scrollIntoView for Radix UI components
+Element.prototype.scrollIntoView = jest.fn()
+
+// Mock HTMLElement methods
+Object.defineProperty(HTMLElement.prototype, 'scrollIntoView', {
+  value: jest.fn(),
+  writable: true,
+})
+
+// Mock getBoundingClientRect
+Object.defineProperty(Element.prototype, 'getBoundingClientRect', {
+  value: jest.fn(() => ({
+    bottom: 0,
+    height: 0,
+    left: 0,
+    right: 0,
+    top: 0,
+    width: 0,
+    x: 0,
+    y: 0,
+  })),
+  writable: true,
+})
