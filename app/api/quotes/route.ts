@@ -3,6 +3,7 @@ import { quoteOperations, utils } from '@/lib/database'
 import { validateQuoteFormData } from '@/lib/validations/quote'
 import { QuoteFormData } from '@/lib/types/quote'
 import { handleApiError, createSuccessResponse, validateApiInput, logError } from '@/lib/utils/api-errors'
+import { sendNewQuoteNotifications } from '@/lib/notifications'
 
 /**
  * GET /api/quotes - Get all quotes
@@ -94,6 +95,18 @@ export async function POST(request: NextRequest) {
 
     // Create the quote
     const quote = await quoteOperations.create(quoteCreateData)
+
+    // Send email notifications asynchronously (don't wait for completion)
+    sendNewQuoteNotifications(quote.id).then((result) => {
+      console.log('Quote notifications sent:', {
+        quoteId: quote.id,
+        quoteNumber: quote.quoteNumber,
+        clientNotified: result.clientNotified,
+        adminNotified: result.adminNotified,
+      })
+    }).catch((error) => {
+      console.error('Failed to send quote notifications:', error)
+    })
 
     // Log successful quote creation
     logError(null, 'quote_created', {

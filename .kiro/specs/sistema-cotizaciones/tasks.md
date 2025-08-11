@@ -64,7 +64,6 @@ Este plan de implementación convierte el diseño del Sistema de Cotizaciones On
 
 - [x] 7. Construir sistema de seguimiento público
 
-
   - Crear GET /api/quotes/track/[token] para seguimiento
   - Implementar componente QuoteTracker para mostrar estado
   - Crear app/cotizacion/seguimiento/[token]/page.tsx
@@ -73,7 +72,8 @@ Este plan de implementación convierte el diseño del Sistema de Cotizaciones On
   - Escribir tests para sistema de seguimiento completo
   - _Requirements: 4.1, 4.2, 4.3_
 
-- [ ] 8. Implementar sistema de notificaciones por email
+- [x] 8. Implementar sistema de notificaciones por email
+
 
   - Configurar Resend para envío de emails
   - Crear templates de email para diferentes estados
