@@ -35,7 +35,6 @@ Este plan de implementación convierte el diseño del Sistema de Cotizaciones On
 
 - [x] 4. Construir componente de formulario de cotización
 
-
   - Crear QuoteRequestForm con React Hook Form
   - Implementar validación client-side con Zod resolver
   - Crear componente PriceCalculator para estimación en tiempo real
@@ -44,8 +43,7 @@ Este plan de implementación convierte el diseño del Sistema de Cotizaciones On
   - Escribir tests de componente para formulario completo
   - _Requirements: 1.1, 1.2, 1.3, 2.1, 6.1, 6.2, 6.3_
 
-- [ ] 5. Implementar sistema de subida de archivos
-
+- [x] 5. Implementar sistema de subida de archivos
   - Configurar Vercel Blob Storage para archivos adjuntos
   - Crear POST /api/upload endpoint con validación de archivos
   - Implementar componente FileUpload con drag & drop
