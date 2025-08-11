@@ -54,7 +54,6 @@ Este plan de implementación convierte el diseño del Sistema de Cotizaciones On
 
 - [x] 6. Desarrollar página de cotización pública
 
-
   - Crear app/cotizacion/page.tsx con formulario completo
   - Implementar integración con API de creación de cotizaciones
   - Crear página de confirmación en app/cotizacion/exito/page.tsx
@@ -63,7 +62,8 @@ Este plan de implementación convierte el diseño del Sistema de Cotizaciones On
   - Escribir tests E2E para flujo completo de cotización
   - _Requirements: 1.1, 1.2, 1.3, 1.4, 1.5_
 
-- [ ] 7. Construir sistema de seguimiento público
+- [x] 7. Construir sistema de seguimiento público
+
 
   - Crear GET /api/quotes/track/[token] para seguimiento
   - Implementar componente QuoteTracker para mostrar estado
