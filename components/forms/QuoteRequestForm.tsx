@@ -10,10 +10,11 @@ import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Checkbox } from '@/components/ui/checkbox'
-import { Loader2, Calculator, Send } from 'lucide-react'
+import { Loader2, Calculator, Send, Paperclip } from 'lucide-react'
 import { quoteFormDataSchema } from '@/lib/validations/quote'
 import { QuoteFormData, ServiceType } from '@/lib/types/quote'
 import { PriceCalculator } from './PriceCalculator'
+import { FileUpload } from './FileUpload'
 import { toast } from 'sonner'
 
 interface QuoteRequestFormProps {
@@ -80,6 +81,7 @@ const availableFeatures = {
 
 export function QuoteRequestForm({ onSubmit, isSubmitting = false }: QuoteRequestFormProps) {
   const [showPriceCalculator, setShowPriceCalculator] = useState(false)
+  const [attachedFiles, setAttachedFiles] = useState<File[]>([])
   
   const form = useForm<QuoteFormData>({
     resolver: zodResolver(quoteFormDataSchema),
@@ -97,7 +99,8 @@ export function QuoteRequestForm({ onSubmit, isSubmitting = false }: QuoteReques
         description: '',
         features: [],
         additionalRequirements: ''
-      }
+      },
+      attachments: []
     }
   })
 
@@ -106,16 +109,22 @@ export function QuoteRequestForm({ onSubmit, isSubmitting = false }: QuoteReques
 
   const handleSubmit = async (data: QuoteFormData) => {
     try {
-      await onSubmit(data)
-      toast.success('¡Cotización enviada exitosamente!', {
-        description: 'Te contactaremos pronto con una propuesta personalizada.'
-      })
+      // Include attached files in the submission
+      const dataWithFiles = {
+        ...data,
+        attachments: attachedFiles
+      }
+      await onSubmit(dataWithFiles)
       form.reset()
+      setAttachedFiles([])
     } catch (error) {
-      toast.error('Error al enviar la cotización', {
-        description: 'Por favor, intenta nuevamente o contactanos directamente.'
-      })
+      // Error handling is done in the wrapper component
+      console.error('Form submission error:', error)
     }
+  }
+
+  const handleFilesChange = (files: File[]) => {
+    setAttachedFiles(files)
   }
 
   const currentFeatures = selectedServiceType ? availableFeatures[selectedServiceType] : []
@@ -383,6 +392,33 @@ export function QuoteRequestForm({ onSubmit, isSubmitting = false }: QuoteReques
                       <FormMessage />
                     </FormItem>
                   )}
+                />
+              </div>
+
+              {/* Archivos Adjuntos */}
+              <div className="space-y-4">
+                <div>
+                  <h3 className="text-lg font-semibold flex items-center gap-2">
+                    <Paperclip className="h-5 w-5" />
+                    Archivos de Referencia
+                  </h3>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    Opcional - Sube imágenes, documentos o referencias que nos ayuden a entender mejor tu proyecto
+                  </p>
+                </div>
+                
+                <FileUpload
+                  onFilesChange={handleFilesChange}
+                  maxFiles={5}
+                  maxFileSize={10}
+                  acceptedTypes={[
+                    'image/jpeg',
+                    'image/png',
+                    'image/webp',
+                    'application/pdf',
+                    'application/msword',
+                    'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+                  ]}
                 />
               </div>
 

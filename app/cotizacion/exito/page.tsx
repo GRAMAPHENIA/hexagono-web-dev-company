@@ -1,154 +1,202 @@
-import { Metadata } from 'next'
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { CheckCircle, Mail, Clock, ArrowLeft, Sparkles, Users, Calendar } from 'lucide-react'
+import { Badge } from '@/components/ui/badge'
+import { CheckCircle, Clock, Mail, MessageCircle, ArrowLeft, Home } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Cotización Enviada - Hexágono Web',
-  description: 'Tu cotización ha sido enviada exitosamente. Te contactaremos pronto con una propuesta personalizada.',
+  description: 'Tu solicitud de cotización ha sido enviada exitosamente. Te contactaremos pronto con una propuesta personalizada.',
+  robots: {
+    index: false,
+    follow: false
+  }
 }
 
 export default function CotizacionExitoPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
-      <div className="container mx-auto px-4 py-8">
-        <div className="max-w-4xl mx-auto">
-          {/* Header con animación */}
-          <div className="text-center mb-12">
-            <div className="relative inline-block mb-6">
-              <div className="w-24 h-24 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center mx-auto shadow-lg animate-pulse">
-                <CheckCircle className="w-12 h-12 text-white" />
-              </div>
-              <div className="absolute -top-2 -right-2 w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center">
-                <Sparkles className="w-4 h-4 text-yellow-800" />
-              </div>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="max-w-2xl mx-auto">
+          {/* Success Header */}
+          <div className="text-center space-y-6 mb-12">
+            <div className="w-20 h-20 bg-green-100 dark:bg-green-900/20 rounded-full flex items-center justify-center mx-auto">
+              <CheckCircle className="h-10 w-10 text-green-600 dark:text-green-400" />
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent mb-4">
-              ¡Cotización Enviada!
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Tu solicitud ha sido recibida exitosamente. Estamos emocionados de trabajar contigo.
-            </p>
+            
+            <div className="space-y-2">
+              <h1 className="text-3xl md:text-4xl font-bold text-green-600 dark:text-green-400">
+                ¡Cotización Enviada!
+              </h1>
+              <p className="text-xl text-muted-foreground">
+                Tu solicitud ha sido recibida exitosamente
+              </p>
+            </div>
           </div>
 
-          {/* Cards informativas */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            <Card className="text-center hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Mail className="w-6 h-6 text-blue-600" />
-                </div>
-                <CardTitle className="text-lg">Confirmación por Email</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  Hemos enviado una confirmación a tu email con los detalles de tu solicitud
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <div className="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Clock className="w-6 h-6 text-yellow-600" />
-                </div>
-                <CardTitle className="text-lg">Respuesta en 24 Horas</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  Nuestro equipo revisará tu proyecto y te enviará una propuesta personalizada
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Users className="w-6 h-6 text-green-600" />
-                </div>
-                <CardTitle className="text-lg">Soporte Continuo</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  Te acompañamos durante todo el proceso del proyecto
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Proceso paso a paso */}
-          <Card className="mb-12">
+          {/* Main Success Card */}
+          <Card className="mb-8">
             <CardHeader>
-              <CardTitle className="text-2xl text-center">¿Qué sigue?</CardTitle>
-              <CardDescription className="text-center">
-                Nuestro proceso de trabajo contigo
+              <CardTitle className="flex items-center gap-2">
+                <Mail className="h-5 w-5 text-primary" />
+                ¿Qué sigue ahora?
+              </CardTitle>
+              <CardDescription>
+                Te mantendremos informado sobre el progreso de tu cotización
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="space-y-4">
+                <div className="flex items-start gap-4">
+                  <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-sm font-semibold text-primary">1</span>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold">Confirmación por email</h3>
+                    <p className="text-sm text-muted-foreground">
+                      Recibirás un email de confirmación con los detalles de tu solicitud en los próximos minutos.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-sm font-semibold text-primary">2</span>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold">Análisis del proyecto</h3>
+                    <p className="text-sm text-muted-foreground">
+                      Nuestro equipo analizará tu proyecto y preparará una propuesta personalizada.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-sm font-semibold text-primary">3</span>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold">Propuesta detallada</h3>
+                    <p className="text-sm text-muted-foreground">
+                      Te enviaremos una cotización completa con precios, timeline y especificaciones técnicas.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-primary/5 rounded-lg p-4 border border-primary/20">
+                <div className="flex items-center gap-2 mb-2">
+                  <Clock className="h-4 w-4 text-primary" />
+                  <span className="font-semibold text-primary">Tiempo de respuesta</span>
+                </div>
+                <p className="text-sm">
+                  Te contactaremos en <strong>menos de 24 horas</strong> con una propuesta inicial. 
+                  Para proyectos complejos, podríamos necesitar información adicional.
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Contact Options */}
+          <Card className="mb-8">
+            <CardHeader>
+              <CardTitle>¿Necesitas contactarnos?</CardTitle>
+              <CardDescription>
+                Si tienes alguna pregunta o quieres agregar información adicional
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-2xl font-bold text-primary">1</span>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <a
+                  href="mailto:contacto@hexagono.xyz"
+                  className="flex items-center gap-3 p-4 rounded-lg border border-border hover:bg-muted/50 transition-colors"
+                >
+                  <Mail className="h-5 w-5 text-primary" />
+                  <div>
+                    <div className="font-medium">Email</div>
+                    <div className="text-sm text-muted-foreground">contacto@hexagono.xyz</div>
                   </div>
-                  <h3 className="font-semibold mb-2">Análisis</h3>
+                </a>
+                
+                <a
+                  href="https://wa.me/5491123782307"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 p-4 rounded-lg border border-border hover:bg-muted/50 transition-colors"
+                >
+                  <MessageCircle className="h-5 w-5 text-primary" />
+                  <div>
+                    <div className="font-medium">WhatsApp</div>
+                    <div className="text-sm text-muted-foreground">+54 11 2378-2307</div>
+                  </div>
+                </a>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Additional Information */}
+          <Card className="mb-8">
+            <CardHeader>
+              <CardTitle>Información importante</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="flex items-start gap-3">
+                <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+                <div>
+                  <h4 className="font-medium">Cotización sin compromiso</h4>
                   <p className="text-sm text-muted-foreground">
-                    Revisamos tu proyecto en detalle
+                    Nuestra cotización es completamente gratuita y no implica ningún compromiso de tu parte.
                   </p>
                 </div>
-                
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-2xl font-bold text-primary">2</span>
-                  </div>
-                  <h3 className="font-semibold mb-2">Propuesta</h3>
+              </div>
+              
+              <div className="flex items-start gap-3">
+                <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+                <div>
+                  <h4 className="font-medium">Propuesta personalizada</h4>
                   <p className="text-sm text-muted-foreground">
-                    Preparamos una propuesta personalizada
+                    Cada cotización es única y adaptada específicamente a las necesidades de tu proyecto.
                   </p>
                 </div>
-                
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-2xl font-bold text-primary">3</span>
-                  </div>
-                  <h3 className="font-semibold mb-2">Contacto</h3>
+              </div>
+              
+              <div className="flex items-start gap-3">
+                <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
+                <div>
+                  <h4 className="font-medium">Asesoramiento incluido</h4>
                   <p className="text-sm text-muted-foreground">
-                    Te contactamos con la mejor solución
-                  </p>
-                </div>
-                
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-2xl font-bold text-primary">4</span>
-                  </div>
-                  <h3 className="font-semibold mb-2">Coordinación</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Coordinamos una reunión si es necesario
+                    Te ayudamos a definir y optimizar tu proyecto para obtener los mejores resultados.
                   </p>
                 </div>
               </div>
             </CardContent>
           </Card>
 
-          {/* Acciones */}
-          <div className="text-center space-y-4">
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" asChild className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70">
-                <Link href="/">
-                  <ArrowLeft className="w-5 h-5 mr-2" />
-                  Volver al Inicio
-                </Link>
-              </Button>
-              <Button variant="outline" size="lg" asChild>
-                <Link href="/contact">
-                  <Calendar className="w-5 h-5 mr-2" />
-                  Contactar Directamente
-                </Link>
-              </Button>
-            </div>
+          {/* Navigation Actions */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button asChild variant="outline">
+              <Link href="/cotizacion" className="flex items-center gap-2">
+                <ArrowLeft className="h-4 w-4" />
+                Nueva Cotización
+              </Link>
+            </Button>
             
+            <Button asChild>
+              <Link href="/" className="flex items-center gap-2">
+                <Home className="h-4 w-4" />
+                Volver al Inicio
+              </Link>
+            </Button>
+          </div>
+
+          {/* Footer Note */}
+          <div className="mt-12 text-center">
             <p className="text-sm text-muted-foreground">
-              ¿Tienes alguna pregunta? No dudes en contactarnos
+              ¿No recibiste el email de confirmación? Revisa tu carpeta de spam o 
+              <a href="mailto:contacto@hexagono.xyz" className="text-primary hover:underline ml-1">
+                contactanos directamente
+              </a>
             </p>
           </div>
         </div>

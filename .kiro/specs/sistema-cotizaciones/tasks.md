@@ -52,7 +52,8 @@ Este plan de implementación convierte el diseño del Sistema de Cotizaciones On
   - Escribir tests para subida y validación de archivos
   - _Requirements: 8.1, 8.2, 8.3, 8.4, 8.5_
 
-- [ ] 6. Desarrollar página de cotización pública
+- [x] 6. Desarrollar página de cotización pública
+
 
   - Crear app/cotizacion/page.tsx con formulario completo
   - Implementar integración con API de creación de cotizaciones
