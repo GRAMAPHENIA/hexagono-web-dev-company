@@ -1,49 +1,87 @@
 import { MetadataRoute } from 'next'
-import { siteConfig } from '@/lib/site-config'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = siteConfig.url
-  const currentDate = new Date()
+  const baseUrl = 'https://hexagono-web-dev-company.vercel.app'
   
-  // Páginas principales del sitio
+  // Páginas estáticas principales
   const staticPages = [
     {
       url: baseUrl,
-      lastModified: currentDate,
-      changeFrequency: 'weekly' as const,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
       priority: 1,
     },
     {
-      url: `${baseUrl}/services`,
-      lastModified: currentDate,
+      url: `${baseUrl}/servicios`,
+      lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/testimonials`,
-      lastModified: currentDate,
+      url: `${baseUrl}/cotizacion`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/acerca-de`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/contacto`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/preguntas-frecuentes`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/testimonios`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.6,
+    },
+  ]
+
+  // Páginas de servicios específicos
+  const servicePages = [
+    {
+      url: `${baseUrl}/servicios/desarrollo-web`,
+      lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/contact`,
-      lastModified: currentDate,
-      changeFrequency: 'yearly' as const,
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/about`,
-      lastModified: currentDate,
-      changeFrequency: 'yearly' as const,
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/faq`,
-      lastModified: currentDate,
+      url: `${baseUrl}/servicios/landing-page`,
+      lastModified: new Date(),
       changeFrequency: 'monthly' as const,
-      priority: 0.5,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/servicios/web-corporativa`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/servicios/tienda-online`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/servicios/redes-sociales`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
     },
   ]
 
-  return staticPages
+  return [...staticPages, ...servicePages]
 }

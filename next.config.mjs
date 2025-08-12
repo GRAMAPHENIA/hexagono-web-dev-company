@@ -1,5 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Reducir logs en desarrollo
+  logging: {
+    fetches: {
+      fullUrl: false,
+    },
+  },
   images: {
     domains: ['hexagono.xyz'],
     formats: ['image/webp', 'image/avif'],

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { quoteOperations, utils } from '@/lib/database'
-import { validateQuoteFormData } from '@/lib/validations/quote'
+import { validateQuoteSubmission } from '@/lib/validations/quote'
 import { QuoteFormData } from '@/lib/types/quote'
 import { handleApiError, createSuccessResponse, validateApiInput, logError } from '@/lib/utils/api-errors'
 import { sendNewQuoteNotifications } from '@/lib/notifications'
@@ -49,11 +49,11 @@ export async function POST(request: NextRequest) {
     body = await request.json()
     
     // Validate the request data
-    const validation = validateQuoteFormData(body)
+    const validation = validateQuoteSubmission(body)
     if (!validation.success) {
       throw validation.error
     }
-    const quoteData: QuoteFormData = validation.data
+    const quoteData = validation.data
 
     // Generate unique quote number and access token
     const quoteNumber = await utils.generateQuoteNumber()
@@ -84,6 +84,17 @@ export async function POST(request: NextRequest) {
           featureCost: getFeatureCost(feature)
         }))
       },
+      ...(quoteData.attachments && quoteData.attachments.length > 0 ? {
+        attachments: {
+          create: quoteData.attachments.map(attachment => ({
+            filename: attachment.filename,
+            originalName: attachment.originalName,
+            storageUrl: attachment.url,
+            fileSize: attachment.size,
+            mimeType: attachment.mimeType
+          }))
+        }
+      } : {}),
       statusHistory: {
         create: {
           newStatus: 'PENDING',

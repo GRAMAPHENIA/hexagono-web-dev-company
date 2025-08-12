@@ -107,7 +107,9 @@ export async function POST(request: NextRequest) {
         const uniqueFilename = `${timestamp}-${randomString}.${fileExtension}`
 
         // Upload to Vercel Blob
-        const blob = await put(uniqueFilename, file, {
+        const fileBuffer = await file.arrayBuffer()
+        
+        const blob = await put(`hexagono/${uniqueFilename}`, fileBuffer, {
           access: 'public',
           addRandomSuffix: false
         })

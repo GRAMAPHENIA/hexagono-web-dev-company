@@ -1,0 +1,27 @@
+# Robots.txt para Hexágono Web
+# https://hexagono-web-dev-company.vercel.app
+
+User-agent: *
+Allow: /
+
+# Permitir acceso a páginas principales
+Allow: /
+Allow: /servicios
+Allow: /cotizacion
+Allow: /acerca-de
+Allow: /contacto
+
+# Bloquear páginas administrativas y privadas
+Disallow: /admin
+Disallow: /api/
+Disallow: /cotizacion/seguimiento/
+
+# Bloquear archivos temporales y de sistema
+Disallow: /_next/
+Disallow: /.*
+
+# Sitemap
+Sitemap: https://hexagono-web-dev-company.vercel.app/sitemap.xml
+
+# Crawl-delay para ser amigable con los servidores
+Crawl-delay: 1

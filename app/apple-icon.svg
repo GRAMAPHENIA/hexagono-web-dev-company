@@ -1,0 +1,15 @@
+<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fondo con bordes redondeados para Apple -->
+  <rect width="180" height="180" rx="40" fill="#667eea"/>
+  
+  <!-- Hexágono central -->
+  <path d="M90 30L135 60V120L90 150L45 120V60L90 30Z" fill="white" fill-opacity="0.1" stroke="white" stroke-width="3"/>
+  
+  <!-- Letra H grande -->
+  <path d="M65 70V110M115 70V110M65 90H115" stroke="white" stroke-width="8" stroke-linecap="round"/>
+  
+  <!-- Puntos decorativos -->
+  <circle cx="90" cy="130" r="3" fill="white"/>
+  <circle cx="80" cy="135" r="2" fill="white" fill-opacity="0.7"/>
+  <circle cx="100" cy="135" r="2" fill="white" fill-opacity="0.7"/>
+</svg>

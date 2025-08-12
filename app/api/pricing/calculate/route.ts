@@ -30,12 +30,13 @@ export async function POST(request: NextRequest) {
     const priceEstimate = calculatePriceEstimate(serviceType, features, customRequirements)
 
     // Log pricing calculation for analytics
-    logError(null, 'price_calculated', {
+    console.log('Price calculated:', {
       serviceType,
       featuresCount: features.length,
       features,
       hasCustomRequirements: !!customRequirements,
-      totalEstimate: priceEstimate.totalEstimate
+      totalEstimate: priceEstimate.totalEstimate,
+      timestamp: new Date().toISOString()
     })
 
     return createSuccessResponse(priceEstimate, 'Precio calculado exitosamente')

@@ -16,22 +16,28 @@ export function QuoteFormWrapper() {
       // First, upload files if any
       let uploadedFiles: any[] = []
       if (data.attachments && data.attachments.length > 0) {
-        const formData = new FormData()
-        data.attachments.forEach(file => {
-          formData.append('files', file)
-        })
+        try {
+          const formData = new FormData()
+          data.attachments.forEach(file => {
+            formData.append('files', file)
+          })
 
-        const uploadResponse = await fetch('/api/upload', {
-          method: 'POST',
-          body: formData,
-        })
+          const uploadResponse = await fetch('/api/upload', {
+            method: 'POST',
+            body: formData,
+          })
 
-        if (!uploadResponse.ok) {
-          throw new Error('Error al subir los archivos')
+          if (!uploadResponse.ok) {
+            const errorData = await uploadResponse.json().catch(() => ({ error: 'Unknown error' }))
+            throw new Error(`Error al subir los archivos: ${errorData.error || uploadResponse.statusText}`)
+          }
+
+          const uploadResult = await uploadResponse.json()
+          uploadedFiles = uploadResult.uploadedFiles || []
+        } catch (uploadError) {
+          console.error('File upload error:', uploadError)
+          throw new Error(`Error al subir los archivos: ${uploadError.message}`)
         }
-
-        const uploadResult = await uploadResponse.json()
-        uploadedFiles = uploadResult.uploadedFiles || []
       }
 
       // Prepare quote data with uploaded file references
@@ -61,7 +67,6 @@ export function QuoteFormWrapper() {
       }
 
       const result = await response.json()
-      console.log('Cotización enviada:', result)
       
       // Redirigir inmediatamente a la página de éxito
       router.push('/cotizacion/exito')

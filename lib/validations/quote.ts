@@ -45,11 +45,29 @@ export const projectDetailsSchema = z.object({
     .optional()
 })
 
-// Quote form data validation
+// Uploaded file attachment schema
+export const uploadedAttachmentSchema = z.object({
+  filename: z.string(),
+  originalName: z.string(),
+  url: z.string().url(),
+  size: z.number(),
+  mimeType: z.string()
+})
+
+// Quote form data validation (for client-side with File objects)
 export const quoteFormDataSchema = z.object({
   clientInfo: clientInfoSchema,
   projectDetails: projectDetailsSchema,
   attachments: z.array(z.instanceof(File))
+    .max(5, 'No se pueden adjuntar más de 5 archivos')
+    .optional()
+})
+
+// Quote submission data validation (for server-side with uploaded file info)
+export const quoteSubmissionSchema = z.object({
+  clientInfo: clientInfoSchema,
+  projectDetails: projectDetailsSchema,
+  attachments: z.array(uploadedAttachmentSchema)
     .max(5, 'No se pueden adjuntar más de 5 archivos')
     .optional()
 })
@@ -98,6 +116,10 @@ export const fileValidationSchema = z.object({
 // Validation functions
 export function validateQuoteFormData(data: unknown) {
   return quoteFormDataSchema.safeParse(data)
+}
+
+export function validateQuoteSubmission(data: unknown) {
+  return quoteSubmissionSchema.safeParse(data)
 }
 
 export function validateClientInfo(data: unknown) {
